@@ -10,14 +10,8 @@
       <div class="logo-container">
         <img src="@/assets/logo.png" alt="App Logo" class="logo" />
         <p class="app-description">
-          Welcome to our Recipe and Food Search App! Use the search bar above to find recipes and foods using the Spoonacular API.
+          Welcome to Bite Buddy, your Recipe and Food Search App! Use the search bar above to find recipes and foods using the Spoonacular API.
         </p>
-        <div class="food-icons">
-          <i class="fas fa-apple-alt"></i>
-          <i class="fas fa-carrot"></i>
-          <i class="fas fa-drumstick-bite"></i>
-          <i class="fas fa-fish"></i>
-        </div>
       </div>
       <router-view/>
     </main>
@@ -47,6 +41,9 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  overflow-x: hidden;
+}
 #app {
   display: flex;
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -113,6 +110,7 @@ main {
       font-size: 18px;
       margin-bottom: 20px;
       color: #2c3e50; // matching the appealing color
+      
     }
 
     .food-icons {
