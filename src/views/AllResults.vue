@@ -1,85 +1,108 @@
+<!-- src/views/AllResults.vue -->
 <template>
-    <div class="results-grid">
-      <div v-if="loading">Loading...</div>
-      <div v-if="error">{{ error }}</div>
-      <div v-else>
-        <div v-for="recipe in recipes" :key="recipe.id" class="recipe-card" @click="getRecipeDetails(recipe.id)">
-          <img :src="recipe.image" :alt="recipe.title" />
-          <div class="recipe-info">
-            <h3>{{ recipe.title }}</h3>
-            <p>Ingredients: {{ recipe.ingredients.join(', ') }}</p>
-            <p>Time: {{ recipe.readyInMinutes }} minutes</p>
-          </div>
-        </div>
+  <div class="results-container">
+    <h1>All Results for "{{ $route.query.searchQuery }}"</h1>
+    <div v-if="recipes.length" class="grid">
+      <div v-for="recipe in recipes" :key="recipe.id" class="recipe-item">
+        <img :src="recipe.image" alt="Recipe Image" v-if="recipe.image" />
+        <h2>{{ recipe.title }}</h2>
+        <p v-if="recipe.ingredients">Ingredients: {{ recipe.ingredients.map(i => i.name).join(', ') }}</p>
+        <router-link :to="{ name: 'RecipeDetails', params: { id: recipe.id } }">View Details</router-link>
       </div>
     </div>
-  </template>
-  
-  <script>
-  import apiService from '@/apiService'
-  
-  export default {
-    data() {
-      return {
-        recipes: [],
-        loading: false,
-        error: null
-      };
-    },
-    created() {
-      this.fetchRecipes();
-    },
-    methods: {
-      fetchRecipes() {
-        this.loading = true;
-        this.error = null;
-        apiService.searchRecipes(this.$route.query.searchQuery)
-          .then(response => {
-            this.recipes = response.data.results;
-          })
-          .catch(error => {
-            this.error = "There was an error fetching the recipes.";
-            console.error("Error:", error);
-          })
-          .finally(() => {
-            this.loading = false;
-          });
-      },
-      getRecipeDetails(id) {
-        this.$router.push({ name: 'RecipeDetails', params: { id } });
-      }
+    <div v-else>
+      <p>No results found.</p>
+    </div>
+  </div>
+</template>
+
+<script>
+import apiService from '@/apiService';
+
+export default {
+  data() {
+    return {
+      recipes: [],
+      error: null,
+      loading: true
+    };
+  },
+  created() {
+    this.searchRecipes();
+  },
+  methods: {
+    searchRecipes() {
+      const query = this.$route.query.searchQuery;
+      apiService.searchRecipes(query)
+        .then(response => {
+          this.recipes = response.data.results;
+        })
+        .catch(error => {
+          this.error = "There was an error fetching the recipes.";
+          console.error("Error:", error);
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     }
-  };
-  </script>
-  
-  <style lang="scss">
-  .results-grid {
+  }
+};
+</script>
+
+<style scoped>
+.results-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-    .recipe-card {
+
+    .recipe-item {
+      padding: 10px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      overflow: hidden;
-      cursor: pointer;
+      text-align: center;
+      background-color: #fff;
+
       img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
       }
-      .recipe-info {
-        padding: 10px;
-        h3 {
-          margin: 0 0 10px;
-        }
-        p {
-          margin: 0 0 5px;
-        }
+
+      h2 {
+        margin: 10px 0;
+        font-size: 20px;
       }
-      &:hover {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      p {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #666;
+      }
+
+      a {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 5px 10px;
+        background: #42b983;
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+
+        &:hover {
+          background: #339966;
+        }
       }
     }
   }
-  </style>
-  
+}
+</style>

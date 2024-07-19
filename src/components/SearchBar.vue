@@ -79,12 +79,13 @@
   <style lang="scss">
   .search-container {
     display: flex;
+    justify-content: center;
     align-items: center;
     position: relative;
   
     .logo {
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       margin-right: 10px;
       cursor: pointer;
@@ -96,7 +97,7 @@
     }
   
     input[type="text"] {
-      flex: 1;
+      width: 60%;
       max-width: 500px;
       padding: 10px 15px;
       border: 1px solid #ccc;

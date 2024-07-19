@@ -1,8 +1,13 @@
+<!-- src/views/RecipeDetails.vue -->
 <template>
-  <div>
+  <div v-if="recipe" class="recipe-details">
     <h1>{{ recipe.title }}</h1>
-    <img :src="recipe.image" alt="Recipe Image" />
-    <div v-html="recipe.summary"></div>
+    <img :src="recipe.image" alt="Recipe Image" v-if="recipe.image" />
+    <div v-html="recipe.summary" class="summary"></div>
+    <div v-if="recipe.instructions">
+      <h2>Instructions</h2>
+      <div v-html="recipe.instructions"></div>
+    </div>
     <div v-if="recipe.reviews && recipe.reviews.length">
       <h2>Reviews</h2>
       <ul>
@@ -11,6 +16,9 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div v-else>
+    <p>Loading...</p>
   </div>
 </template>
 
@@ -48,17 +56,39 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
+.recipe-details {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 
-img {
-  max-width: 100%;
-  margin-bottom: 20px;
-}
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
 
-div[ v-html] {
-  margin-bottom: 20px;
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .summary {
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 5px 0;
+    }
+  }
 }
 </style>

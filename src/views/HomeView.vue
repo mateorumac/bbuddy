@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <header>
-      <SearchBar />
-    </header>
-    <Navbar @toggle="isCollapsed = !isCollapsed" />
     <main :class="{ 'collapsed': isCollapsed }">
-      <div class="logo-container">
-        <img src="@/assets/logo.png" alt="App Logo" class="logo" />
-        <p class="app-description">
-          Welcome to Bite Buddy, your Recipe and Food Search App! Use the search bar above to find recipes and foods using the Spoonacular API.
-        </p>
+      <div class="hero-container">
+        <div class="hero-content">
+          <img src="@/assets/logo.png" alt="App Logo" class="hero-logo" />
+          <h1>Welcome to Bite Buddy!</h1>
+          <p>
+            Discover delicious recipes and explore a world of culinary possibilities with our easy-to-use recipe search app.
+          </p>
+          <button @click="$router.push('/about')">Learn More</button>
+        </div>
       </div>
       <router-view />
     </main>
@@ -43,10 +43,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  background-color: #fffbe7; // full yellowish background color
+  background-color: #fffbe7;
   height: 100vh;
   width: 100vw;
-  overflow-x: hidden; // hide horizontal overflow
+  overflow-x: hidden;
 }
 
 header {
@@ -54,10 +54,10 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background: #000; // black color for header
+  background: #000;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-bottom: 2px solid #ccc; // silver-ish line for separation
+  border-bottom: 2px solid #ccc;
   z-index: 1000;
 }
 
@@ -71,23 +71,50 @@ main {
     margin-left: 200px;
   }
 
-  .logo-container {
+  .hero-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    height: calc(100vh - 130px);
+    padding: 20px;
 
-    .logo {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 20px;
-    }
+    .hero-content {
+      max-width: 800px;
 
-    .app-description {
-      font-size: 18px;
-      margin-bottom: 20px;
-      color: #2c3e50; // matching the appealing color
+      .hero-logo {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: #42b983;
+      }
+
+      p {
+        font-size: 24px;
+        margin-bottom: 30px;
+        color: #333;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 18px;
+        color: #fff;
+        background: #42b983;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+        
+        &:hover {
+          background: #339966;
+        }
+      }
     }
   }
 }
