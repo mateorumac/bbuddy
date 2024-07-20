@@ -9,10 +9,10 @@
           <i class="fas fa-home"></i>
           <span v-if="!isCollapsed">Home</span>
         </router-link>
-        <router-link to="/about">
+        <!-- <router-link to="/about">
           <i class="fas fa-info-circle"></i>
           <span v-if="!isCollapsed">About</span>
-        </router-link>
+        </router-link> -->
       </div>
     </nav>
   </template>
@@ -65,7 +65,7 @@
         align-self: flex-start;
         background: none;
         border: none;
-        color: #fff;
+        color: #c9b373;
         font-size: 24px;
         cursor: pointer;
         margin-bottom: 20px; // top of the navbar
@@ -83,11 +83,11 @@
       transition: background 0.3s;
   
       &:hover {
-        background: #42b983;
+        background: #c9b373;
       }
   
       &.router-link-exact-active {
-        color: #42b983;
+        color: #c9b373;
       }
   
       i {

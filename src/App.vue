@@ -7,7 +7,9 @@
     <main :class="{ 'collapsed': isCollapsed }">
       <router-view />
     </main>
-    <Footer />
+    <div class="footer-wrapper">
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -31,6 +33,11 @@ export default {
 </script>
 
 <style lang="scss">
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 #app {
   display: flex;
   flex-direction: column;
@@ -39,14 +46,65 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  height: 100vh;
+  min-height: 100vh; /* Ensure #app takes at least full viewport height */
   width: 100vw;
   overflow-x: hidden;
+  background-image: url('@/assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #000;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #ccc;
+  z-index: 1000;
 }
 
 main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 70px; /* Adjust based on the height of your fixed header */
+  transition: margin-left 0.3s;
+}
+
+.footer-wrapper {
+  margin-top: auto; /* Push footer to the bottom */
+}
+
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    margin: 0;
+    padding: 5px 0;
+  }
+
+  .social-icons {
+    margin-top: 10px;
+
+    a {
+      color: white;
+      margin: 0 10px;
+      font-size: 20px;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #42b983;
+      }
+    }
+  }
 }
 </style>

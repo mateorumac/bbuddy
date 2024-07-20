@@ -77,6 +77,7 @@
   </script>
   
   <style lang="scss">
+
   .search-container {
     display: flex;
     justify-content: center;
