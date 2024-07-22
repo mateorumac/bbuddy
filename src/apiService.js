@@ -24,6 +24,24 @@ const apiService = {
         apiKey: process.env.VUE_APP_SPOONACULAR_API_KEY
       }
     });
+  },
+  searchRecipesByNutrients(query, minValue, maxValue) {
+    return axios.get('https://api.spoonacular.com/recipes/complexSearch', {
+      params: {
+        query: query,
+        minCalories: minValue,
+        maxCalories: maxValue,
+        apiKey: process.env.VUE_APP_SPOONACULAR_API_KEY
+      }
+    });
+  },
+  searchGroceryProducts(query) {
+    return axios.get('https://api.spoonacular.com/food/ingredients/search', {
+      params: {
+        query: query,
+        apiKey: process.env.VUE_APP_SPOONACULAR_API_KEY
+      }
+    });
   }
 };
 

@@ -49,121 +49,135 @@ export default {
 <style lang="scss">
 body {
   overflow-x: hidden;
-  
+  margin: 0;
 }
 
 #home-view {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Changed to flex-start */
+  justify-content: flex-start;
   height: 100vh;
   text-align: center;
   overflow-x: hidden;
+  width: 100%;
+}
 
-  main {
-    background-image: url('@/assets/background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    padding: 20px 0;
-    background-image: none;
-  }
+main {
+  background-image: url('@/assets/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  padding-top: 70px; /* Adjust according to the height of your header */
+  overflow-y: auto;
+}
 
-  .hero-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
 
-  .card {
-    background-color: #000;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    padding: 30px;
-    text-align: center;
-    color: #c9b373; /* Yellow gold */
-  }
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
-  .main-card {
-    max-width: 800px;
-    margin-bottom: 20px;
-  }
+.card {
+  background-color: #000;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  text-align: center;
+  color: #c9b373;
+  max-width: 800px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-  .about-card {
-    background-color: #000;
-    color: #c9b373; /* Yellow gold */
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    max-width: 800px;
-    padding: 20px;
-    margin-top: 20px; /* Adjust margin for spacing */
-    text-align: center;
+.main-card {
+  margin-bottom: 20px;
+  margin-top: 20px; /* Adjust margin for spacing */
+}
 
-    h1 {
-      color: #9e5068; /* Bright purple */
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-  }
-
-  .hero-logo {
-    width: 240px;
-    height: 240px;
-    margin-bottom: -50px; 
-    margin-top: -30px;/* Bring text closer to logo */
-  }
+.about-card {
+  background-color: #000;
+  color: #c9b373;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  box-sizing: border-box; /* Ensure it matches the main card width */
 
   h1 {
-    font-size: 36px;
-    color: #9e5068; /* Bright purple */
-    margin-bottom: 5px; /* Closer to logo */
-    font-family: 'Roboto', sans-serif; /* Nice font */
+    color: #9e5068;
+    font-size: 24px;
+    margin-bottom: 10px;
   }
 
   p {
-    font-size: 20px;
-    margin-bottom: 20px;
-    line-height: 1.6;
-    font-family: 'Roboto', sans-serif; /* Nice font */
-  }
-
-  button {
-    padding: 10px 20px;
     font-size: 18px;
-    color: #fff;
-    background: #9e5068; /* Bright purple */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 10px; /* Padding between button and about card */
+    line-height: 1.6;
+  }
+}
 
-    &:hover {
-      background: #7d3a5a; /* Darker purple */
-    }
+.hero-logo {
+  width: 240px;
+  height: 240px;
+  margin-bottom: -50px;
+  margin-top: -30px;
+}
+
+h1 {
+  font-size: 36px;
+  color: #9e5068;
+  margin-bottom: 5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  font-size: 20px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #fff;
+  background: #9e5068;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 10px;
+
+  &:hover {
+    background: #7d3a5a;
   }
 }
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s, transform 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+
+.fade-enter, .fade-leave-to {
   opacity: 0;
-  transform: translateY(20px); /* Consistent transition */
+  transform: translateY(20px);
 }
 </style>

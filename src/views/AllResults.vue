@@ -1,4 +1,3 @@
-<!-- src/views/AllResults.vue -->
 <template>
   <div class="results-container">
     <div class="header-container">

@@ -17,6 +17,8 @@
 import Navbar from '@/components/Navbar.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import Footer from '@/components/Footer.vue';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 export default {
   components: {
@@ -32,7 +34,9 @@ export default {
 };
 </script>
 
+
 <style lang="scss">
+
 html, body {
   margin: 0;
   height: 100%;
@@ -62,7 +66,7 @@ header {
   background: #000;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid #c9b373;
   z-index: 1000;
 }
 
@@ -76,35 +80,4 @@ main {
   transition: margin-left 0.3s;
 }
 
-.footer-wrapper {
-  margin-top: auto; /* Push footer to the bottom */
-}
-
-
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  p {
-    margin: 0;
-    padding: 5px 0;
-  }
-
-  .social-icons {
-    margin-top: 10px;
-
-    a {
-      color: white;
-      margin: 0 10px;
-      font-size: 20px;
-      transition: color 0.3s;
-
-      &:hover {
-        color: #42b983;
-      }
-    }
-  }
-}
 </style>
