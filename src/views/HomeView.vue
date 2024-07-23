@@ -103,7 +103,7 @@ main {
   width: 100%;
 
   h1 {
-    color: #9e5068;
+    color: #c9b373;
     font-size: 24px;
     margin-bottom: 10px;
   }
@@ -123,7 +123,7 @@ main {
 
 h1 {
   font-size: 36px;
-  color: #9e5068;
+  color: #c9b373;
   margin-bottom: 10px;
   font-family: 'Roboto', sans-serif;
 }
@@ -138,8 +138,8 @@ p {
 button {
   padding: 10px 20px;
   font-size: 18px;
-  color: #fff;
-  background: #9e5068;
+  color: #000;
+  background: #c9b373;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -148,7 +148,7 @@ button {
   margin-bottom: 10px;
 
   &:hover {
-    background: #7d3a5a;
+    background: #bfa660;
   }
 }
 
