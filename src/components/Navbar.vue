@@ -9,10 +9,10 @@
           <i class="fas fa-home"></i>
           <span v-if="!isCollapsed">Home</span>
         </router-link>
-        <!-- <router-link to="/about">
-          <i class="fas fa-info-circle"></i>
-          <span v-if="!isCollapsed">About</span>
-        </router-link> -->
+         <router-link to="/meal-planner">
+          <i class="fas fa-clipboard-list"></i>
+          <span v-if="!isCollapsed">Meal Planner</span>
+        </router-link> 
       </div>
     </nav>
   </template>
@@ -76,7 +76,7 @@
       display: flex;
       align-items: center;
       font-weight: bold;
-      color: #fff;
+      color: #c9b373;
       padding: 10px;
       margin: 10px 0;
       text-decoration: none;
@@ -87,7 +87,7 @@
       }
   
       &.router-link-exact-active {
-        color: #c9b373;
+        color: #fff;
       }
   
       i {

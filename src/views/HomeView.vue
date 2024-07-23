@@ -6,22 +6,14 @@
           <div class="card main-card">
             <img src="@/assets/logo_transparent.png" alt="App Logo" class="hero-logo" />
             <h1>Welcome to Bite Buddy!</h1>
-            <p>
-              Discover delicious recipes and explore a world of culinary possibilities with our easy-to-use recipe search app.
-            </p>
-            <button @click="toggleAboutCard">
-              {{ showAboutCard ? 'Show Less' : 'Learn More' }}
-            </button>
+            <p>Discover delicious recipes and explore a world of culinary possibilities with our easy-to-use recipe search app.</p>
+            <button @click="toggleAboutCard">{{ showAboutCard ? 'Show Less' : 'Learn More' }}</button>
           </div>
           <transition name="fade">
             <div v-if="showAboutCard" class="card about-card">
               <h1>About Bite Buddy</h1>
-              <p>
-                Welcome to Bite Buddy, your go-to app for discovering delicious recipes and food ideas. With Bite Buddy, you can easily search for recipes using ingredients you have on hand, explore a wide range of recipes, and save your favorites. Our app is powered by the Spoonacular API, ensuring you have access to the latest and most popular recipes available.
-              </p>
-              <p>
-                Whether you're a home cook looking for new dinner ideas or a foodie exploring new dishes, Bite Buddy helps you find and save recipes that suit your taste. Start searching today and let Bite Buddy inspire your next meal!
-              </p>
+              <p>Welcome to Bite Buddy, your go-to app for discovering delicious recipes and food ideas. With Bite Buddy, you can easily search for recipes using ingredients you have on hand and explore a wide range of recipes. Our app is powered by the Spoonacular API, ensuring you have access to the latest and most popular recipes available.</p>
+              <p>Whether you're a home cook looking for new dinner ideas or a foodie exploring new dishes, Bite Buddy helps you find and save recipes that suit your taste. Start searching today and let Bite Buddy inspire your next meal!</p>
             </div>
           </transition>
         </div>
@@ -57,36 +49,26 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 100vh;
+  height: 100vh; /* This ensures the view height is exactly the height of the viewport */
   text-align: center;
   overflow-x: hidden;
   width: 100%;
 }
 
 main {
-  background-image: url('@/assets/background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  flex: 1; /* Takes up all available space */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  flex: 1;
-  padding-top: 70px; /* Adjust according to the height of your header */
-  overflow-y: auto;
+  padding: 20px 20px; /* Adjust padding as needed */
 }
 
 .hero-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
+  width: 100%; /* Adjust based on design requirements */
+  max-width: 800px; /* Optional: limits content width */
 }
-
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -98,16 +80,14 @@ main {
   background-color: #000;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  padding: 30px;
+  padding: 20px;
   text-align: center;
   color: #c9b373;
   max-width: 800px;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .main-card {
-  margin-bottom: 20px;
   margin-top: 20px; /* Adjust margin for spacing */
 }
 
@@ -121,7 +101,6 @@ main {
   text-align: center;
   max-width: 800px;
   width: 100%;
-  box-sizing: border-box; /* Ensure it matches the main card width */
 
   h1 {
     color: #9e5068;
@@ -139,19 +118,19 @@ main {
   width: 240px;
   height: 240px;
   margin-bottom: -50px;
-  margin-top: -30px;
+  margin-top: -40px;
 }
 
 h1 {
   font-size: 36px;
   color: #9e5068;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-family: 'Roboto', sans-serif;
 }
 
 p {
   font-size: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   line-height: 1.6;
   font-family: 'Roboto', sans-serif;
 }
@@ -166,6 +145,7 @@ button {
   cursor: pointer;
   transition: background 0.3s;
   margin-top: 10px;
+  margin-bottom: 10px;
 
   &:hover {
     background: #7d3a5a;

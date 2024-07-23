@@ -4,6 +4,7 @@ import AllResults from '../views/AllResults.vue';
 import RecipeDetails from '../views/RecipeDetails.vue';
 import NutrientsSearch from '../views/NutrientsSearch.vue';
 import GrocerySearch from '../views/GrocerySearch.vue';
+import MealPlanner from '../views/MealPlanner.vue';
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/grocery',
     name: 'GrocerySearch',
     component: GrocerySearch
+  },
+  {
+    path: '/meal-planner',
+    name: 'MealPlanner',
+    component: MealPlanner
   }
 ];
 

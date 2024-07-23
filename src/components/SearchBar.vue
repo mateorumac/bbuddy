@@ -1,26 +1,30 @@
 <template>
-  <div class="search-container">
+  <div class="search-container" @click.stop="closeDropdown" ref="searchContainer">
     <img src="@/assets/logo.png" alt="App Logo" class="logo" @click="goHome" @mouseover="spinLogo" @mouseleave="stopSpinLogo" :class="{ spinning: isSpinning }" />
     <input type="text" placeholder="Search for recipes or ingredients..." v-model="searchQuery" @input="searchRecipes" />
     <div class="button-container">
       <button 
-        @click="searchType = 'nutrients'" 
+        @click="toggleSearchType('nutrients')" 
         :class="{ active: searchType === 'nutrients' }"
         :title="'Switch search type to Nutrients'"
       >
         <i class="fa fa-calculator"></i>
       </button>
       <button 
-        @click="searchType = 'grocery'" 
+        @click="toggleSearchType('grocery')" 
         :class="{ active: searchType === 'grocery' }"
         :title="'Switch search type to Grocery Products'"
       >
         <i class="fa fa-shopping-cart"></i>
       </button>
     </div>
+    <div v-if="searchType === 'nutrients'">
+      <input type="number" v-model="minCalories" placeholder="Min Calories" />
+      <input type="number" v-model="maxCalories" placeholder="Max Calories" />
+    </div>
     <div v-if="recipes.length" class="dropdown">
       <ul>
-        <li v-for="recipe in limitedRecipes" :key="recipe.id" @click="getRecipeDetails(recipe.id)">
+        <li v-for="recipe in limitedRecipes" :key="recipe.id" @click="selectRecipe(recipe.id)">
           {{ recipe.title }}
         </li>
       </ul>
@@ -36,8 +40,10 @@ export default {
   data() {
     return {
       searchQuery: '',
-      searchType: 'recipes', // Default search type
+      searchType: 'recipes',
       recipes: [],
+      minCalories: '',
+      maxCalories: '',
       loading: false,
       error: null,
       isSpinning: false
@@ -49,33 +55,45 @@ export default {
     }
   },
   methods: {
-    searchRecipes() {
+    async searchRecipes() {
       if (this.searchQuery.length < 3) {
         this.recipes = [];
         return;
       }
       this.loading = true;
-      this.error = null;
-      if (this.searchType === 'recipes') {
-        apiService.searchRecipes(this.searchQuery).then(response => {
-          this.recipes = response.data.results;
-        }).catch(error => {
-          console.error("Error:", error);
-          this.error = "There was an error fetching the recipes.";
-        }).finally(() => {
-          this.loading = false;
-        });
-      } else if (this.searchType === 'nutrients') {
-        // Implement nutrient search logic here
-      } else if (this.searchType === 'grocery') {
-        // Implement grocery search logic here
+      try {
+        let response;
+        if (this.searchType === 'recipes') {
+          response = await apiService.searchRecipes(this.searchQuery);
+        } else if (this.searchType === 'nutrients') {
+          response = await apiService.searchRecipesByNutrients(this.searchQuery, this.minCalories, this.maxCalories);
+        } else if (this.searchType === 'grocery') {
+          response = await apiService.searchGroceryProducts(this.searchQuery);
+        }
+        this.recipes = response.data.results || response.data;
+      } catch (error) {
+        this.error = "There was an error fetching the results.";
+      } finally {
+        this.loading = false;
       }
+    },
+    toggleSearchType(type) {
+      this.searchType = type;
+      this.searchRecipes(); // Refetch based on new type
+    },
+    closeDropdown() {
+      this.recipes = []; // Clears the dropdown
+    },
+    selectRecipe(id) {
+      this.getRecipeDetails(id);
+      this.closeDropdown();
     },
     getRecipeDetails(id) {
       this.$router.push({ name: 'RecipeDetails', params: { id } });
     },
     showAllResults() {
       this.$router.push({ name: 'AllResults', query: { searchQuery: this.searchQuery, searchType: this.searchType } });
+      this.closeDropdown();
     },
     goHome() {
       this.$router.push({ name: 'home' });
@@ -97,7 +115,6 @@ export default {
   align-items: center;
   position: relative;
   
-
   .logo {
     width: 50px;
     height: 50px;
@@ -125,7 +142,7 @@ export default {
   .button-container {
     display: flex;
     margin-left: 10px;
-    
+    padding-top: 5px;
 
     button {
       width: 50px;
@@ -140,7 +157,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: -5px;
+      margin-top: -4px;
       margin-right: 18px;
 
       &.active {

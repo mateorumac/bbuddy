@@ -49,8 +49,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  min-height: 100vh; /* Ensure #app takes at least full viewport height */
+  color: #c9b373; 
   width: 100vw;
   overflow-x: hidden;
   background-image: url('@/assets/background.jpg');
@@ -68,6 +67,7 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-bottom: 2px solid #c9b373;
   z-index: 1000;
+  
 }
 
 main {

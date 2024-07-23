@@ -21,7 +21,8 @@ export default {
 <style scoped>
 /* Ensure the footer is styled correctly */
 .footer-wrapper {
-  margin-top: auto;
+  margin-top: 0;
+  
 }
 
 footer {
@@ -32,6 +33,8 @@ footer {
   width: 100%;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
   border-top: 2px solid #c9b373;
+  position: absolute;
+
 }
 
 .footer-content {

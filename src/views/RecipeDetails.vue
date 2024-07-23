@@ -1,26 +1,35 @@
-<!-- src/views/RecipeDetails.vue -->
 <template>
-  <div v-if="recipe" class="recipe-details">
-    <div class="card">
-      <h1>{{ recipe.title }}</h1>
-      <img :src="recipe.image" alt="Recipe Image" v-if="recipe.image" />
-      <div v-html="recipe.summary" class="summary"></div>
-      <div v-if="recipe.instructions">
-        <h2>Instructions</h2>
-        <div v-html="recipe.instructions" class="instructions"></div>
+  <div>
+    <div v-if="loading" class="spinner">
+      <div class="loader"></div>
+    </div>
+    <div v-else class="recipe-details">
+      <div class="card">
+        <h1>{{ recipe.title }}</h1>
+        <img :src="recipe.image" alt="Recipe Image" v-if="recipe.image" />
+        <div v-html="recipe.summary" class="summary"></div>
+        <div class="instructions" v-html="recipe.instructions"></div>
+        <div class="ingredients">
+          <h2>Ingredients</h2>
+          <ul>
+            <li v-for="ingredient in recipe.extendedIngredients" :key="ingredient.id">
+              {{ ingredient.original }}
+            </li>
+          </ul>
+        </div>
       </div>
-      <div v-if="recipe.reviews && recipe.reviews.length">
-        <h2>Reviews</h2>
-        <ul>
-          <li v-for="(review, index) in recipe.reviews" :key="index">
-            {{ review }}
-          </li>
-        </ul>
+      <!-- Similar Recipes Section -->
+      <div v-if="similarRecipes.length" class="similar-recipes">
+        <h2>Similar Recipes</h2>
+        <div class="similar-recipes-cards">
+          <div v-for="similar in similarRecipes" :key="similar.id" class="card">
+            <router-link :to="{ name: 'RecipeDetails', params: { id: similar.id }}">
+              <h3>{{ similar.title }}</h3>
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div v-else>
-    <p>Loading...</p>
   </div>
 </template>
 
@@ -31,6 +40,7 @@ export default {
   data() {
     return {
       recipe: null,
+      similarRecipes: [],
       error: null,
       loading: true
     };
@@ -38,31 +48,41 @@ export default {
   created() {
     this.fetchRecipeDetails();
   },
+  watch: {
+    '$route.params.id': 'fetchRecipeDetails'
+  },
   methods: {
-    fetchRecipeDetails() {
+    async fetchRecipeDetails() {
       const id = this.$route.params.id;
-      apiService.getRecipeDetails(id)
-        .then(response => {
-          this.recipe = response.data;
-        })
-        .catch(error => {
-          this.error = "There was an error fetching the recipe details.";
-          console.error("Error:", error);
-        })
-        .finally(() => {
-          this.loading = false;
-        });
+      this.loading = true;
+      try {
+        const { data } = await apiService.getRecipeDetails(id);
+        this.recipe = data;
+        await this.fetchSimilarRecipes(id); // Fetch similar recipes after fetching details
+      } catch (error) {
+        this.error = "There was an error fetching the recipe details.";
+      } finally {
+        this.loading = false;
+      }
+    },
+    async fetchSimilarRecipes(id) {
+      try {
+        const { data } = await apiService.getSimilarRecipes(id);
+        this.similarRecipes = data;
+      } catch (error) {
+        console.error("Error fetching similar recipes:", error);
+      }
     }
   }
 };
 </script>
-
 <style scoped>
 .recipe-details {
   padding: 60px 20px; /* Increased padding for more spacing */
   display: flex;
-  justify-content: center;
-  margin-top: 570px;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px; /* Margin from the top */
 }
 
 .card {
@@ -74,6 +94,7 @@ export default {
   max-width: 800px;
   width: 100%;
   box-sizing: border-box;
+  margin-bottom: 20px; /* Added margin between cards */
 }
 
 h1 {
@@ -109,26 +130,68 @@ h2 {
   color: #ccc; /* Light gray text color for better readability */
 }
 
-ul {
+.ingredients ul {
   list-style: none;
   padding: 0;
-
-  li {
-    padding: 10px 0;
-    border-bottom: 1px solid #333; /* Darker border for contrast */
-    font-size: 16px;
-    color: #ccc; /* Light gray text color */
-  }
 }
 
-/* Link styles for HTML content */
-.card a {
-  color: #c9b373; /* Color of the links */
-  text-decoration: underline; /* Underline links */
+.ingredients li {
+  padding: 10px 0;
+  border-bottom: 1px solid #333; /* Darker border for contrast */
+  font-size: 16px;
+  color: #ccc; /* Light gray text color */
 }
 
-.card a:hover {
-  color: #fff; /* Optionally change link color on hover */
-  text-decoration: none; /* Remove underline on hover (optional) */
+.similar-recipes {
+  padding: 20px;
+}
+
+.similar-recipes-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.similar-recipes .card {
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  max-width: 250px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.similar-recipes .card a {
+  color: #c9b373; /* Updated link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.similar-recipes .card a:hover {
+  color: #fff; /* Change link color on hover */
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #c9b373;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>
