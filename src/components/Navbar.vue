@@ -84,6 +84,11 @@
   
       &:hover {
         background: #c9b373;
+        color: #000;
+
+        i {
+        color: #000; // Change icon color to black on hover
+      }
       }
   
       &.router-link-exact-active {

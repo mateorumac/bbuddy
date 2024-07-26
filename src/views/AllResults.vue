@@ -55,7 +55,7 @@ export default {
   padding: 60px 20px; /* Padding around the content */
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 1200px;
+  margin-top: 60px; /* Adjusted margin-top */
 }
 
 .header-container {
@@ -69,7 +69,7 @@ export default {
 h1 {
   text-align: center;
   margin: 0;
-  color: #fff; /* White text color */
+  color: #000; /* Changed text color to black */
   font-family: 'Roboto', sans-serif; /* Nice font */
   font-size: 28px;
 }
@@ -93,6 +93,7 @@ h1 {
       height: auto;
       border-radius: 8px;
       margin-bottom: 15px;
+      object-fit: cover; /* Ensures the image fits nicely */
     }
 
     h2 {
@@ -112,7 +113,7 @@ h1 {
       margin-top: 10px;
       padding: 8px 15px;
       background: #c9b373; /* Button background color */
-      color: white;
+      color: #000; /* Changed text color to black */
       border-radius: 4px;
       text-decoration: none;
 
@@ -122,4 +123,5 @@ h1 {
     }
   }
 }
+
 </style>

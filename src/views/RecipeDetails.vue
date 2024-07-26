@@ -6,9 +6,19 @@
     <div v-else class="recipe-details">
       <div class="card">
         <h1>{{ recipe.title }}</h1>
-        <img :src="recipe.image" alt="Recipe Image" v-if="recipe.image" />
-        <div v-html="recipe.summary" class="summary"></div>
-        <div class="instructions" v-html="recipe.instructions"></div>
+        <div class="recipe-info-container">
+          <div class="image-container">
+            <img :src="recipe.image" alt="Recipe Image" v-if="recipe.image" />
+            <div class="notifications">
+              <div class="notification">{{ recipe.readyInMinutes }} mins</div>
+              <div v-if="recipe.vegan" class="notification">Vegan</div>
+              <div v-else-if="recipe.glutenFree" class="notification">Gluten Free</div>
+              <div v-else-if="recipe.vegetarian" class="notification">Vegetarian</div>
+            </div>
+          </div>
+        </div>
+        <div v-html="cleanSummary" class="summary"></div>
+        <div class="instructions" v-html="cleanInstructions"></div>
         <div class="ingredients">
           <h2>Ingredients</h2>
           <ul>
@@ -20,7 +30,7 @@
       </div>
       <!-- Similar Recipes Section -->
       <div v-if="similarRecipes.length" class="similar-recipes">
-        <h2>Similar Recipes</h2>
+        <h2 class="similar-recipes-title">Similar Recipes</h2>
         <div class="similar-recipes-cards">
           <div v-for="similar in similarRecipes" :key="similar.id" class="card">
             <router-link :to="{ name: 'RecipeDetails', params: { id: similar.id }}">
@@ -45,11 +55,13 @@ export default {
       loading: true
     };
   },
-  created() {
-    this.fetchRecipeDetails();
-  },
-  watch: {
-    '$route.params.id': 'fetchRecipeDetails'
+  computed: {
+    cleanSummary() {
+      return this.recipe ? this.removeLinks(this.recipe.summary) : '';
+    },
+    cleanInstructions() {
+      return this.recipe ? this.removeLinks(this.recipe.instructions) : '';
+    }
   },
   methods: {
     async fetchRecipeDetails() {
@@ -72,10 +84,21 @@ export default {
       } catch (error) {
         console.error("Error fetching similar recipes:", error);
       }
+    },
+    removeLinks(text) {
+      if (!text) return '';
+      return text.replace(/<a\b[^>]*>(.*?)<\/a>/gi, '$1');
     }
+  },
+  watch: {
+    '$route.params.id': 'fetchRecipeDetails'
+  },
+  created() {
+    this.fetchRecipeDetails();
   }
 };
 </script>
+
 <style scoped>
 .recipe-details {
   padding: 60px 20px; /* Increased padding for more spacing */
@@ -97,6 +120,38 @@ export default {
   margin-bottom: 20px; /* Added margin between cards */
 }
 
+.recipe-info-container {
+  display: flex;
+  justify-content: center; /* Center align the image container */
+  align-items: center;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center; /* Center align the image within the container */
+}
+
+.notifications {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.notification {
+  background-color: #c9b373; /* Notification background color */
+  color: #000; /* Notification text color */
+  border-radius: 50%;
+  padding: 10px 20px;
+  margin-bottom: 10px; /* Space between notifications */
+  text-align: center;
+  font-weight: bold;
+  width: max-content;
+}
+
 h1 {
   font-size: 36px;
   margin-bottom: 20px;
@@ -105,7 +160,7 @@ h1 {
 }
 
 img {
-  max-width: 100%;
+  max-width: 100%; /* Ensure the image fits within the container */
   height: auto;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -137,13 +192,22 @@ h2 {
 
 .ingredients li {
   padding: 10px 0;
-  border-bottom: 1px solid #333; /* Darker border for contrast */
+  border-bottom: 1px solid #c9b373; /* Updated border color */
   font-size: 16px;
   color: #ccc; /* Light gray text color */
 }
 
 .similar-recipes {
   padding: 20px;
+}
+
+.similar-recipes-title {
+  background-color: #000;
+  color: #c9b373;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
 .similar-recipes-cards {
@@ -159,19 +223,21 @@ h2 {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  max-width: 250px;
-  width: 100%;
+  width: 250px; /* Set a fixed width for consistency */
+  height: 150px; /* Set a fixed height for consistency */
   box-sizing: border-box;
   margin-bottom: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.similar-recipes .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .similar-recipes .card a {
   color: #c9b373; /* Updated link color */
   text-decoration: none; /* Remove underline */
-}
-
-.similar-recipes .card a:hover {
-  color: #fff; /* Change link color on hover */
 }
 
 .spinner {
