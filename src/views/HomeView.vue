@@ -9,18 +9,19 @@
             <p>Discover delicious recipes and explore a world of culinary possibilities with our easy-to-use recipe search app.</p>
             <button @click="toggleAboutCard">{{ showAboutCard ? 'Show Less' : 'Learn More' }}</button>
           </div>
-          <transition name="fade">
-            <div v-if="showAboutCard" class="card about-card">
-              <h1>About Bite Buddy</h1>
-              <p>Welcome to Bite Buddy, your go-to app for discovering delicious recipes and food ideas. With Bite Buddy, you can easily search for recipes using ingredients you have on hand and explore a wide range of recipes. Our app is powered by the Spoonacular API, ensuring you have access to the latest and most popular recipes available.</p>
-              <p>Whether you're a home cook looking for new dinner ideas or a foodie exploring new dishes, Bite Buddy helps you find and save recipes that suit your taste. Start searching today and let Bite Buddy inspire your next meal!</p>
-            </div>
-          </transition>
+          
+          <div v-if="showAboutCard" class="card about-card">
+            <h1>About Bite Buddy</h1>
+            <p>Welcome to Bite Buddy, your go-to app for discovering delicious recipes and food ideas. With Bite Buddy, you can easily search for recipes using ingredients you have on hand and explore a wide range of recipes. Our app is powered by the Spoonacular API, ensuring you have access to the latest and most popular recipes available.</p>
+            <p>Whether you're a home cook looking for new dinner ideas or a foodie exploring new dishes, Bite Buddy helps you find and save recipes that suit your taste. Start searching today and let Bite Buddy inspire your next meal!</p>
+          </div>
+          
         </div>
       </div>
     </main>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -49,25 +50,26 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 100vh; /* This ensures the view height is exactly the height of the viewport */
+  min-height: 83vh;
   text-align: center;
   overflow-x: hidden;
   width: 100%;
 }
 
 main {
-  flex: 1; /* Takes up all available space */
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 20px 20px; /* Adjust padding as needed */
+  padding: 20px;
 }
 
 .hero-container {
-  width: 100%; /* Adjust based on design requirements */
-  max-width: 800px; /* Optional: limits content width */
+  margin-top: 60px;
+  width: 100%;
+  max-width: 800px;
 }
 .hero-content {
   display: flex;
@@ -88,7 +90,8 @@ main {
 }
 
 .main-card {
-  margin-top: 20px; /* Adjust margin for spacing */
+  margin-top: 10px; /* Reduced margin for less space from top */
+  margin-bottom: 10px; /* Reduced margin for less space from bottom */
 }
 
 .about-card {
@@ -152,12 +155,4 @@ button {
   }
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s, transform 0.5s;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-  transform: translateY(20px);
-}
 </style>

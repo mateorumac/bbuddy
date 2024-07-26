@@ -2,10 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import AllResults from '../views/AllResults.vue';
 import RecipeDetails from '../views/RecipeDetails.vue';
-import NutrientsSearch from '../views/NutrientsSearch.vue';
-import GrocerySearch from '../views/GrocerySearch.vue';
 import MealPlanner from '../views/MealPlanner.vue';
-import RecipeOfTheDayAndTips from '../views/RecipeOfTheDayAndTips.vue'; // Import the new view
+import RecipeOfTheDayAndTips from '../views/RecipeOfTheDayAndTips.vue';
+import SmartSearch from '../views/SmartSearch.vue';
 
 const routes = [
   {
@@ -24,16 +23,6 @@ const routes = [
     component: RecipeDetails
   },
   {
-    path: '/nutrients',
-    name: 'NutrientsSearch',
-    component: NutrientsSearch
-  },
-  {
-    path: '/grocery',
-    name: 'GrocerySearch',
-    component: GrocerySearch
-  },
-  {
     path: '/meal-planner',
     name: 'MealPlanner',
     component: MealPlanner
@@ -41,7 +30,12 @@ const routes = [
   {
     path: '/recipe-of-the-day-and-tips',
     name: 'RecipeOfTheDayAndTips',
-    component: RecipeOfTheDayAndTips // Add the new route
+    component: RecipeOfTheDayAndTips 
+  },
+  {
+    path: '/SmartSearch',
+    name: 'SmartSearch',
+    component: SmartSearch
   }
 ];
 

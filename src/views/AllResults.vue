@@ -3,24 +3,31 @@
     <div class="header-container">
       <h1>All Results for "{{ $route.query.searchQuery }}"</h1>
     </div>
-    <div v-if="recipes.length" class="grid">
-      <div v-for="recipe in recipes" :key="recipe.id" class="recipe-item">
-        <img :src="recipe.image" alt="Recipe Image" v-if="recipe.image" />
-        <h2>{{ recipe.title }}</h2>
-        <p v-if="recipe.ingredients">Ingredients: {{ recipe.ingredients.map(i => i.name).join(', ') }}</p>
-        <router-link :to="{ name: 'RecipeDetails', params: { id: recipe.id } }" class="view-details-button">View Details</router-link>
-      </div>
-    </div>
+    <LoadingSpinner v-if="loading" loadingText="Loading results..." />
     <div v-else>
-      <p>No results found.</p>
+      <div v-if="recipes.length" class="grid">
+        <div v-for="recipe in recipes" :key="recipe.id" class="recipe-item">
+          <img :src="recipe.image" alt="Recipe Image" v-if="recipe.image" />
+          <h2>{{ recipe.title }}</h2>
+          <p v-if="recipe.ingredients">Ingredients: {{ recipe.ingredients.map(i => i.name).join(', ') }}</p>
+          <router-link :to="{ name: 'RecipeDetails', params: { id: recipe.id } }" class="view-details-button">View Details</router-link>
+        </div>
+      </div>
+      <ErrorOrNoResults v-else message="No results found." />
     </div>
   </div>
 </template>
 
 <script>
 import apiService from '@/apiService';
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
+import ErrorOrNoResults from '@/components/ErrorOrNoResults.vue';
 
 export default {
+  components: {
+    LoadingSpinner,
+    ErrorOrNoResults
+  },
   data() {
     return {
       recipes: [],
@@ -49,6 +56,7 @@ export default {
   }
 };
 </script>
+
 
 <style scoped>
 .results-container {
@@ -79,49 +87,52 @@ h1 {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
 
-  .recipe-item {
-    padding: 15px;
-    border: 1px solid #444; /* Dark border color */
-    border-radius: 8px;
-    text-align: center;
-    background-color: #000; /* Black background color */
-    color: #fff; /* White text color */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      object-fit: cover; /* Ensures the image fits nicely */
-    }
-
-    h2 {
-      margin: 10px 0;
-      font-size: 22px;
-      color: #c9b373; /* Headline color */
-    }
-
-    p {
-      margin: 5px 0;
-      font-size: 16px;
-      color: #ccc; /* Light gray text color */
-    }
-
-    .view-details-button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 15px;
-      background: #c9b373; /* Button background color */
-      color: #000; /* Changed text color to black */
-      border-radius: 4px;
-      text-decoration: none;
-
-      &:hover {
-        background: #bfa660; /* Darker shade for hover effect */
-      }
-    }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr); /* Display 4 items per row */
   }
 }
 
+.recipe-item {
+  padding: 15px;
+  border: 1px solid #444; /* Dark border color */
+  border-radius: 8px;
+  text-align: center;
+  background-color: #000; /* Black background color */
+  color: #fff; /* White text color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    object-fit: cover; /* Ensures the image fits nicely */
+  }
+
+  h2 {
+    margin: 10px 0;
+    font-size: 22px;
+    color: #c9b373; /* Headline color */
+  }
+
+  p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #ccc; /* Light gray text color */
+  }
+
+  .view-details-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #c9b373; /* Button background color */
+    color: #000; /* Changed text color to black */
+    border-radius: 4px;
+    text-decoration: none;
+
+    &:hover {
+      background: #bfa660; /* Darker shade for hover effect */
+    }
+  }
+}
 </style>

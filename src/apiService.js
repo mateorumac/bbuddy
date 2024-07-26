@@ -6,7 +6,7 @@ const baseUrl = 'https://api.spoonacular.com';
 const apiService = {
   searchRecipes(query) {
     return axios.get(`${baseUrl}/recipes/complexSearch`, {
-      params: { query, apiKey }
+      params: { query, number: 40, apiKey } // Fetch 20 results for recipes
     });
   },
   getRecipeDetails(id) {
@@ -16,17 +16,17 @@ const apiService = {
   },
   searchRecipesByIngredient(ingredient) {
     return axios.get(`${baseUrl}/recipes/findByIngredients`, {
-      params: { ingredients: ingredient, number: 10, apiKey }
+      params: { ingredients: ingredient, number: 40, apiKey } // Fetch 20 results by ingredient
     });
   },
   searchRecipesByNutrients(query, minCalories, maxCalories) {
     return axios.get(`${baseUrl}/recipes/complexSearch`, {
-      params: { query, minCalories, maxCalories, apiKey }
+      params: { query, minCalories, maxCalories, number: 40, apiKey } // Fetch 20 results for nutrients search
     });
   },
-  searchGroceryProducts(query) {
+  searchGroceryProducts(query, number = 40) {
     return axios.get(`${baseUrl}/food/ingredients/search`, {
-      params: { query, apiKey }
+      params: { query, number, apiKey } // Fetch 20 results for grocery products
     });
   },
   getWinePairing(food) {
@@ -91,7 +91,8 @@ const apiService = {
       params: {
         apiKey: apiKey,
         query: query,
-        ...filters
+        ...filters,
+        number: 20 // Fetch 20 results for advanced search
       }
     });
   },

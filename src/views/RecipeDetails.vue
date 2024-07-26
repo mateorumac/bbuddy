@@ -1,7 +1,10 @@
 <template>
   <div>
-    <div v-if="loading" class="spinner">
-      <div class="loader"></div>
+    <div v-if="loading">
+      <LoadingSpinner />
+    </div>
+    <div v-else-if="error">
+      <ErrorOrNoResults :message="error" />
     </div>
     <div v-else class="recipe-details">
       <div class="card">
@@ -45,8 +48,14 @@
 
 <script>
 import apiService from '@/apiService';
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
+import ErrorOrNoResults from '@/components/ErrorOrNoResults.vue';
 
 export default {
+  components: {
+    LoadingSpinner,
+    ErrorOrNoResults
+  },
   data() {
     return {
       recipe: null,
@@ -98,6 +107,7 @@ export default {
   }
 };
 </script>
+
 
 <style scoped>
 .recipe-details {

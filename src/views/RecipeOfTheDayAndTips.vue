@@ -4,16 +4,13 @@
         <h1>Recipe of the Day</h1>
       </div>
       <div class="content-container">
-        <div class="recipe-of-the-day card">
-          <div v-if="recipe">
-            <h3>{{ recipe.title }}</h3>
-            <img :src="recipe.image" alt="Recipe Image" />
-            <p v-html="cleanSummary"></p>
-            <router-link :to="{ name: 'RecipeDetails', params: { id: recipe.id } }" class="view-details-button">View Details</router-link>
-          </div>
-          <div v-else>
-            <p>Loading...</p>
-          </div>
+        <LoadingSpinner v-if="loading" loadingText="Loading recipe of the day..." />
+        <ErrorOrNoResults v-else-if="error" :message="error" />
+        <div v-else class="recipe-of-the-day card">
+          <h3>{{ recipe.title }}</h3>
+          <img :src="recipe.image" alt="Recipe Image" />
+          <p v-html="cleanSummary"></p>
+          <router-link :to="{ name: 'RecipeDetails', params: { id: recipe.id } }" class="view-details-button">View Details</router-link>
         </div>
       </div>
     </div>
@@ -21,8 +18,14 @@
   
   <script>
   import apiService from '@/apiService';
+  import LoadingSpinner from '@/components/LoadingSpinner.vue';
+  import ErrorOrNoResults from '@/components/ErrorOrNoResults.vue';
   
   export default {
+    components: {
+      LoadingSpinner,
+      ErrorOrNoResults
+    },
     data() {
       return {
         recipe: null,

@@ -2,33 +2,13 @@
   <div class="search-container" @click.stop="closeDropdown" ref="searchContainer">
     <img src="@/assets/logo.png" alt="App Logo" class="logo" @click="goHome" @mouseover="spinLogo" @mouseleave="stopSpinLogo" :class="{ spinning: isSpinning }" />
     <input type="text" placeholder="Search for recipes or ingredients..." v-model="searchQuery" @input="searchRecipes" />
-    <div class="button-container">
-      <button 
-        @click="toggleSearchType('nutrients')" 
-        :class="{ active: searchType === 'nutrients' }"
-        :title="'Switch search type to Nutrients'"
-      >
-        <i class="fa fa-calculator"></i>
-      </button>
-      <button 
-        @click="toggleSearchType('grocery')" 
-        :class="{ active: searchType === 'grocery' }"
-        :title="'Switch search type to Grocery Products'"
-      >
-        <i class="fa fa-shopping-cart"></i>
-      </button>
-    </div>
-    <div v-if="searchType === 'nutrients'">
-      <input type="number" v-model="minCalories" placeholder="Min Calories" />
-      <input type="number" v-model="maxCalories" placeholder="Max Calories" />
-    </div>
     <div v-if="recipes.length" class="dropdown">
       <ul>
         <li v-for="recipe in limitedRecipes" :key="recipe.id" @click="selectRecipe(recipe.id)">
           {{ recipe.title }}
         </li>
       </ul>
-      <button v-if="recipes.length > 5" @click="showAllResults">Show All Results</button>
+      <button v-if="recipes.length > 8" @click="showAllResults">Show All Results</button>
     </div>
   </div>
 </template>
@@ -40,10 +20,7 @@ export default {
   data() {
     return {
       searchQuery: '',
-      searchType: 'recipes',
       recipes: [],
-      minCalories: '',
-      maxCalories: '',
       loading: false,
       error: null,
       isSpinning: false
@@ -55,58 +32,61 @@ export default {
     }
   },
   methods: {
-    async searchRecipes() {
-      if (this.searchQuery.length < 3) {
-        this.recipes = [];
-        return;
-      }
-      this.loading = true;
-      try {
-        let response;
-        if (this.searchType === 'recipes') {
-          response = await apiService.searchRecipes(this.searchQuery);
-        } else if (this.searchType === 'nutrients') {
-          response = await apiService.searchRecipesByNutrients(this.searchQuery, this.minCalories, this.maxCalories);
-        } else if (this.searchType === 'grocery') {
-          response = await apiService.searchGroceryProducts(this.searchQuery);
-        }
-        this.recipes = response.data.results || response.data;
-      } catch (error) {
-        this.error = "There was an error fetching the results.";
-      } finally {
-        this.loading = false;
-      }
-    },
-    toggleSearchType(type) {
-      this.searchType = type;
-      this.searchRecipes(); // Refetch based on new type
-    },
-    closeDropdown() {
-      this.recipes = []; // Clears the dropdown
-    },
-    selectRecipe(id) {
-      this.getRecipeDetails(id);
+  async searchRecipes() {
+    if (this.searchQuery.length < 3) {
+      this.recipes = [];
+      return;
+    }
+    this.loading = true;
+    try {
+      const response = await apiService.searchRecipes(this.searchQuery);
+      this.recipes = response.data.results || response.data;
+    } catch (error) {
+      this.error = "There was an error fetching the results.";
+    } finally {
+      this.loading = false;
+    }
+  },
+  closeDropdown() {
+    this.recipes = [];
+  },
+  selectRecipe(id) {
+    this.getRecipeDetails(id);
+    this.closeDropdown();
+    this.searchQuery = ''; // Clear the search query after selecting an option
+  },
+  getRecipeDetails(id) {
+    this.$router.push({ name: 'RecipeDetails', params: { id } });
+  },
+  showAllResults() {
+    this.$router.push({ name: 'AllResults', query: { searchQuery: this.searchQuery } });
+    this.closeDropdown();
+  },
+  goHome() {
+    this.$router.push({ name: 'home' });
+  },
+  spinLogo() {
+    this.isSpinning = true;
+  },
+  stopSpinLogo() {
+    this.isSpinning = false;
+  },
+  handleClickOutside(event) {
+    if (this.$refs.searchContainer && !this.$refs.searchContainer.contains(event.target)) {
       this.closeDropdown();
-    },
-    getRecipeDetails(id) {
-      this.$router.push({ name: 'RecipeDetails', params: { id } });
-    },
-    showAllResults() {
-      this.$router.push({ name: 'AllResults', query: { searchQuery: this.searchQuery, searchType: this.searchType } });
-      this.closeDropdown();
-    },
-    goHome() {
-      this.$router.push({ name: 'home' });
-    },
-    spinLogo() {
-      this.isSpinning = true;
-    },
-    stopSpinLogo() {
-      this.isSpinning = false;
     }
   }
+},
+mounted() {
+  document.addEventListener('click', this.handleClickOutside);
+},
+beforeDestroy() {
+  document.removeEventListener('click', this.handleClickOutside);
+}
+
 };
 </script>
+
 
 <style lang="scss">
 .search-container {
@@ -116,8 +96,8 @@ export default {
   position: relative;
   
   .logo {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     margin-right: 10px;
     cursor: pointer;
@@ -137,37 +117,6 @@ export default {
     font-size: 16px;
     outline: none;
     margin-right: 10px;
-  }
-
-  .button-container {
-    display: flex;
-    margin-left: 10px;
-    padding-top: 5px;
-
-    button {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #c9b373; // Consistent with other buttons
-      border: none;
-      color: black;
-      font-size: 20px;
-      cursor: pointer;
-      transition: background 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: -4px;
-      margin-right: 18px;
-
-      &.active {
-        background: #bfa660;
-      }
-
-      &:hover {
-        background: #bfa660;
-      }
-    }
   }
 
   .dropdown {

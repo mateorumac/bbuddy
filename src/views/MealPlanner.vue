@@ -37,24 +37,29 @@
       </div>
     </div>
 
-    <div v-if="loading" class="spinner">
-      <div class="loader"></div>
+    <div v-if="loading">
+      <LoadingSpinner />
+    </div>
+    
+    <div v-else-if="error">
+      <ErrorOrNoResults :message="error" />
     </div>
 
-    <div v-if="!loading && mealPlan" class="meal-plan">
-      <div class="meal-plan-header">
-        <h2>Meals for {{ targetDate }}</h2>
-      </div>
-      <div class="meal-cards">
-        <div v-for="(meal, index) in mealPlan.meals" :key="index" class="meal-card" @click="goToRecipe(meal.id)">
-          <h3>{{ meal.title }}</h3>
-          <p>Preparation time: {{ meal.readyInMinutes }} minutes</p>
+    <div v-else class="meal-plan">
+      <div v-if="mealPlan">
+        <div class="meal-plan-header">
+          <h2>Meals for {{ targetDate }}</h2>
+        </div>
+        <div class="meal-cards">
+          <div v-for="(meal, index) in mealPlan.meals" :key="index" class="meal-card" @click="goToRecipe(meal.id)">
+            <h3>{{ meal.title }}</h3>
+            <p>Preparation time: {{ meal.readyInMinutes }} minutes</p>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div v-if="!loading && !mealPlan">
-      <p style="color: black;"><b>Choose a date to see your meal plan!</b></p>
+      <div v-else>
+        <p style="color: black;"><b>Choose a date to see your meal plan!</b></p>
+      </div>
     </div>
 
     <div v-if="nutritionalInfo" class="nutritional-info">
@@ -73,17 +78,24 @@
 
 <script>
 import apiService from '@/apiService';
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
+import ErrorOrNoResults from '@/components/ErrorOrNoResults.vue';
 
 const cache = {};
 const CACHE_DURATION = 24 * 60 * 60 * 1000; // 1 day in milliseconds
 
 export default {
+  components: {
+    LoadingSpinner,
+    ErrorOrNoResults
+  },
   data() {
     return {
       targetDate: new Date().toISOString().slice(0, 10), // Today's date
       targetCalories: 2000, // Default calorie intake
       mealPlan: null,
       loading: false, // Loading state
+      error: null, // Error state
       nutritionalInfo: null, // Store nutritional information
       shoppingList: null, // Store shopping list
       diet: '', // Diet preference for meal plan customization
@@ -97,10 +109,12 @@ export default {
   methods: {
     async fetchMealPlan() {
       this.loading = true; // Set loading to true before fetching data
+      this.error = null;
       try {
         const response = await apiService.getMealPlan(this.targetDate, this.targetCalories);
         this.mealPlan = response.data;
       } catch (error) {
+        this.error = "There was an error fetching the meal plan.";
         console.error("Error fetching meal plan:", error);
         this.mealPlan = null;
       } finally {
@@ -131,10 +145,12 @@ export default {
         exclude: this.exclude // User input for ingredients to exclude
       };
       this.loading = true; // Set loading to true before fetching data
+      this.error = null;
       try {
         const response = await apiService.customizeMealPlan(preferences);
         this.mealPlan = response.data;
       } catch (error) {
+        this.error = "There was an error customizing the meal plan.";
         console.error("Error customizing meal plan:", error);
         this.mealPlan = null;
       } finally {
@@ -147,10 +163,12 @@ export default {
         intolerances: this.intolerances // User input for intolerances
       };
       this.loading = true; // Set loading to true before fetching data
+      this.error = null;
       try {
         const response = await apiService.advancedRecipeSearch(this.query, filters);
         console.log(response.data.results); // Handle the search results as needed
       } catch (error) {
+        this.error = "There was an error searching recipes.";
         console.error("Error searching recipes:", error);
       } finally {
         this.loading = false; // Set loading to false after fetching data
@@ -174,7 +192,6 @@ export default {
   }
 };
 </script>
-
 
 <style scoped>
 .meal-planner-container {

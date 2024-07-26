@@ -9,13 +9,17 @@
           <i class="fas fa-home"></i>
           <span v-if="!isCollapsed">Home</span>
         </router-link>
+        <router-link to="/SmartSearch">
+          <i class="fas fa-search"></i>
+        <span v-if="!isCollapsed">Grocery Search</span>
+        </router-link>
          <router-link to="/meal-planner">
           <i class="fas fa-clipboard-list"></i>
           <span v-if="!isCollapsed">Meal Planner</span>
         </router-link> 
         <router-link to="/recipe-of-the-day-and-tips">
         <i class="fas fa-lightbulb"></i>
-        <span v-if="!isCollapsed">Surprise me</span>
+        <span v-if="!isCollapsed">Inspire me</span>
       </router-link>
       </div>
     </nav>
