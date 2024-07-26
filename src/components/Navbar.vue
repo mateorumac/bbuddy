@@ -13,6 +13,10 @@
           <i class="fas fa-clipboard-list"></i>
           <span v-if="!isCollapsed">Meal Planner</span>
         </router-link> 
+        <router-link to="/recipe-of-the-day-and-tips">
+        <i class="fas fa-lightbulb"></i>
+        <span v-if="!isCollapsed">Surprise me</span>
+      </router-link>
       </div>
     </nav>
   </template>

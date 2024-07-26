@@ -94,6 +94,11 @@ const apiService = {
         ...filters
       }
     });
+  },
+  getRecipeOfTheDay() {
+    return axios.get(`${baseUrl}/recipes/random`, {
+      params: { apiKey, number: 1 }
+    }).then(response => response.data.recipes[0]);
   }
 };
 

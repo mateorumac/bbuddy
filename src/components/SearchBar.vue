@@ -209,7 +209,7 @@ export default {
       border: none;
       cursor: pointer;
       &:hover {
-        background: #bfa660; // Darker green on hover
+        background: #bfa660; 
       }
     }
   }
