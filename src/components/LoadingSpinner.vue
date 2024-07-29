@@ -21,15 +21,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    min-height: 65vh;
   }
   
   .loader {
     border: 16px solid #f3f3f3;
     border-top: 16px solid #c9b373;
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     animation: spin 2s linear infinite;
   }
   

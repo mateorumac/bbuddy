@@ -5,7 +5,7 @@
         <p>&copy; 2024 Mateo Rumac. All rights reserved.</p>
         <div class="social-icons">
           <a href="https://www.linkedin.com/in/mateo-rumac-170a0b304/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://www.facebook.com/Rooksoni21/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://github.com/mateorumac" target="_blank"><i class="fab fa-github"></i></a>
           <a href="https://www.instagram.com/Rooksoni/" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
       </div>

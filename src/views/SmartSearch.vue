@@ -1,7 +1,6 @@
 <template>
     <div class="grocery-search-container">
       <div class="header-container">
-        <h1>Grocery Search</h1>
       </div>
       <div class="content-container">
         <div v-if="loading">
@@ -14,7 +13,7 @@
           <div class="search-filters card">
             <h2>Search for Grocery Products</h2>
             <div class="filter-group">
-              <label for="query">Search Query:</label>
+              <label for="query">What are you craving?</label>
               <input type="text" v-model="searchQuery" id="query" placeholder="Search for grocery products..." />
             </div>
             <button @click="searchGroceries" class="search-button"><i class="fas fa-search"></i> Search Groceries</button>
@@ -83,124 +82,74 @@
 .grocery-search-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 60px 20px;
   max-width: 1200px;
-  margin: 0 auto;
-  min-height: 70vh; /* Ensure it stretches to the bottom of the screen */
+  margin: auto; /* Centers the container on the page */
+  min-height: 70vh; /* Ensures it stretches to cover most of the viewport height */
 }
 
 .header-container {
-  background-color: #c9b373;
+  text-align: center; /* Ensures header text is centered */
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-h1 {
-  text-align: center;
-  margin: 0;
-  color: #000;
-  font-family: 'Roboto', sans-serif;
-  font-size: 28px;
+  margin-bottom: 20px; /* Provides spacing below the header */
 }
 
 .content-container {
+  width: 100%; /* Full width of the parent container */
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  align-items: center; /* Center align items horizontally */
-  width: 100%; /* Ensure it takes full width */
+  align-items: center; /* Centers all child elements */
 }
 
-.card {
-  background-color: #000;
-  color: #c9b373;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 30px;
-  width: 100%;
-  max-width: 600px;
+.search-filters.card {
+  width: 100%; /* Reduces width to make it more visually appealing */
+  margin: 0 auto; /* Centers the card horizontally */
+  padding: 25px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.2); /* Adds a subtle shadow for depth */
 }
 
 .filter-group {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
-  width: 100%; /* Ensure the input takes full width */
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: #c9b373;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #222;
-  color: #c9b373;
 }
 
 .search-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  padding: 10px 20px;
-  background-color: #c9b373;
-  border: none;
-  border-radius: 5px;
-  color: #000;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 10px; /* Added margin for spacing */
-}
-
-.search-button:hover {
-  background-color: #bfa660;
+  width: auto; /* Allows the button to grow as needed */
+  padding: 10px 40px; /* Larger padding for a better touch area */
+  margin-top: 10px; /* Ensures spacing from the last input field */
 }
 
 .results-container {
-  margin-top: 20px;
-  width: 100%; /* Ensure it takes full width */
+  width: 100%; /* Full width to accommodate all child elements */
+  padding-top: 20px; /* Adds spacing above the results grid */
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid columns */
   gap: 20px;
+}
+
+.grocery-item {
+  background-color: #282828; /* Darker background for contrast */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners for a smoother look */
+  text-align: center; /* Ensures text alignment is centered */
+  color: #fff; /* White text for readability */
+}
+
+.grocery-item img {
+  width: 100%; /* Full width of the container */
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 5px; /* Rounded corners for images */
 }
 
 @media (min-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.grocery-item {
-  padding: 15px;
-  border: 1px solid #444;
-  border-radius: 8px;
-  text-align: center;
-  background-color: #000;
-  color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-  img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-  }
-
-  h3 {
-    margin: 10px 0;
-    font-size: 22px;
-    color: #c9b373;
+    grid-template-columns: repeat(4, 1fr); /* Four items per row on larger screens */
   }
 }
 </style>

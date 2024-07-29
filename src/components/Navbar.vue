@@ -35,10 +35,19 @@
     methods: {
       toggleNav() {
         this.isCollapsed = !this.isCollapsed;
-      }
-    }
-  };
-  </script>
+      },
+      
+  },
+  mounted() {
+    // Add event listener to handle clicks outside the navbar
+    window.addEventListener('click', this.handleOutsideClick);
+  },
+  beforeDestroy() {
+    // Remove event listener when the component is destroyed
+    window.removeEventListener('click', this.handleOutsideClick);
+  }
+};
+</script>
   
   <style lang="scss">
   nav {
@@ -76,7 +85,8 @@
         color: #c9b373;
         font-size: 24px;
         cursor: pointer;
-        margin-bottom: 20px; // top of the navbar
+        margin-bottom: 20px;
+        margin-left: -10px; // top of the navbar
       }
     }
   
