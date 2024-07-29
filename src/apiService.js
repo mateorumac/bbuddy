@@ -46,14 +46,18 @@ const apiService = {
       params: { ingredientName, apiKey }
     });
   },
-  getMealPlan(date, targetCalories) {
+  getMealPlan(date, targetCalories, preferences = {}) {
+    // Ensuring default preferences are set if not provided
+    const params = {
+      apiKey: apiKey,
+      timeFrame: 'day',
+      targetCalories: targetCalories,
+      date: date,
+      ...preferences // Merging preferences safely with default parameters
+    };
+  
     return axios.get(`${baseUrl}/mealplanner/generate`, {
-      params: {
-        apiKey: apiKey,
-        timeFrame: 'day',
-        targetCalories: targetCalories,
-        date: date
-      }
+      params
     });
   },
   getSimilarRecipes(id) {
@@ -62,19 +66,27 @@ const apiService = {
     });
   },
   getNutritionalAnalysis(meals) {
-    const ingredients = meals.map(meal => meal.ingredients).flat().map(ingredient => ingredient.name).join(',');
+    if (!meals || !meals.length) {
+      console.error("No meals provided for nutritional analysis.");
+      return Promise.reject("No meals provided.");
+    }
+    const ingredients = meals.flatMap(meal => meal.ingredients || []).map(ingredient => ingredient.name).filter(Boolean).join(',');
     return axios.get(`${baseUrl}/recipes/analyze`, {
       params: {
-        apiKey: apiKey,
+        apiKey,
         ingredientList: ingredients
       }
     });
   },
   generateShoppingList(meals) {
-    const ingredients = meals.map(meal => meal.ingredients).flat().map(ingredient => ingredient.name).join(',');
+    if (!meals || !meals.length) {
+      console.error("No meals provided for generating a shopping list.");
+      return Promise.reject("No meals provided.");
+    }
+    const ingredients = meals.flatMap(meal => meal.ingredients || []).map(ingredient => ingredient.name).filter(Boolean).join(',');
     return axios.post(`${baseUrl}/mealplanner/shopping-list`, {
-      apiKey: apiKey,
-      ingredients: ingredients
+      apiKey,
+      ingredients
     });
   },
   customizeMealPlan(preferences) {
@@ -91,7 +103,8 @@ const apiService = {
       params: {
         apiKey: apiKey,
         query: query,
-        ...filters,
+        diet: filters.diet,
+        intolerances: filters.intolerances,
         number: 20 // Fetch 20 results for advanced search
       }
     });
