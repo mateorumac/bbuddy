@@ -40,6 +40,11 @@ export default {
 </script>
 
 <style lang="scss">
+
+p{
+  color:#bfa660;
+}
+
 body {
   overflow-x: hidden;
   margin: 0;

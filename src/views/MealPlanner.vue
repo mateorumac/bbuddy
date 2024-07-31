@@ -187,6 +187,8 @@ button:hover {
   justify-content: center;
   flex-wrap: nowrap; /* Ensure all cards are in a single row */
   overflow-x: auto; /* Allows scrolling horizontally if screen width is small */
+  overflow-y: hidden;
+  padding: 10px;
 }
 
 .meal-card {
@@ -202,15 +204,9 @@ button:hover {
   width: 300px; /* Fixed width for each card */
 }
 
-.meal-card img {
-  width: 100%;
-  max-width: 200px; /* Adjust based on your layout needs */
-  height: auto;
-  border-radius: 5px;
-}
 .meal-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .meal-plan-header h2 {
