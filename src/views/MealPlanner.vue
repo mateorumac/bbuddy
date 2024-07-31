@@ -122,12 +122,12 @@ export default {
 
 <style scoped>
 .meal-planner-container {
-  margin-top: 140px;
+  margin-top: 187px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 19px;
-  min-height: 67.9vh;
+  min-height: 62.8vh;
   box-sizing: border-box;
 }
 

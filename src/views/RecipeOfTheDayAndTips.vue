@@ -1,7 +1,7 @@
 <template>
     <div class="combined-container">
       <div class="header-container">
-        <h1>Recipe of the Day</h1>
+        <h1 class="title">Recipe of the Day</h1>
       </div>
       <div class="content-container">
         <LoadingSpinner v-if="loading" loadingText="Loading recipe of the day..." />
@@ -62,6 +62,14 @@
   </script>
   
   <style scoped>
+.title {
+  background-color: #000;
+  color: #c9b373;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  
+}
   .combined-container {
     padding: 60px 20px; /* Padding around the content */
     max-width: 1200px;
@@ -70,7 +78,7 @@
   }
   
   .header-container {
-    background-color: #c9b373; /* Background color for the header container */
+    background-color: #000; /* Background color for the header container */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -80,7 +88,7 @@
   h1 {
     text-align: center;
     margin: 0;
-    color: #000; /* Black text color */
+    color: #c9b373; /* Black text color */
     font-family: 'Roboto', sans-serif; /* Nice font */
     font-size: 28px;
   }

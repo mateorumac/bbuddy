@@ -27,6 +27,7 @@
     min-height: 53.6vh; /* Ensures the container takes up most of the viewport height */
     color: #c9b373;
     font-size: 18px;
+    margin-bottom: -20px;
   }
   
   .error-image {

@@ -9,7 +9,7 @@
       </div>
       <div v-else>
         <div class="search-filters card" :class="{ 'with-results': hasResults }">
-          <h2>Explore Our Grocery Search!</h2>
+          <h1 class="title1">Explore Our Grocery Search!</h1>
           <p class="card-description">Find and discover grocery items to spice up your meals! <br>This tool enables you to effortlessly find grocery products tailored to your culinary needs</p>
           <div class="filter-group">
             <label for="query">What are you craving?</label>
@@ -84,27 +84,25 @@ export default {
 
 
 <style scoped>
+
+.title1{
+  margin-top: -5px;
+}
 .grocery-search-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px;
-  max-width: 1200px;
+  padding: 60px 20px; 
   margin: auto;
-  min-height: 70vh;
+  min-height: 68.4vh;
+  margin-top: 15px;
 }
 
 .header-container {
   text-align: center;
   padding: 20px;
   margin-bottom: 20px;
-}
-
-h1 {
-  margin: 0;
-  color: #000;
-  font-size: 32px;
 }
 
 p {
