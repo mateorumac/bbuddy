@@ -3,7 +3,7 @@
     <div class="card">
       <h1>Meal Planner</h1>
       <p class="description">
-        Plan your meals by choosing a date and your desired calorie intake. This tool helps you create a meal plan for the selected <br> date based on the calorie input.
+        Plan your meals by choosing a date and your desired calorie intake. <br><br>This tool helps you create a meal plan for the selected date based on the calorie input.
       </p>
       <div v-if="currentView === 'main'" class="date-picker-container">
         <input type="date" v-model="targetDate" class="input-field" />
@@ -18,11 +18,10 @@
         <input type="text" v-model="diet" placeholder="Diet (e.g., vegetarian)" class="full-width-input" />
         <input type="text" v-model="exclude" placeholder="Exclude Ingredients (e.g., nuts)" class="full-width-input" />
         <div class="button-group">
-        <button @click="switchToMainView">Back</button>
-        <button @click="customizeMealPlan">Customize</button>
-        
+          <button @click="switchToMainView">Back</button>
+          <button @click="customizeMealPlan">Customize</button>
+        </div>
       </div>
-    </div>
     </div>
     <div v-if="loading">
       <LoadingSpinner />
@@ -36,14 +35,13 @@
           <h2>Meals for {{ new Date(targetDate).toLocaleDateString('en-GB') }}</h2>
         </div>
         <div class="meal-cards">
-        <div v-for="(meal, index) in mealPlan.meals" :key="index" class="meal-card" @click="goToRecipe(meal.id)">
-          <img :src="meal.image || 'path/to/default-image.jpg'" alt="Meal Image" v-if="meal.image">
-
-        <h3>{{ meal.title }}</h3>
-        <p>Preparation time: {{ meal.readyInMinutes }} minutes</p>
-        <p v-if="getCalories(meal)">Calories: {{ getCalories(meal) }} kcal</p>
-      </div>
-    </div>
+          <div v-for="(meal, index) in mealPlan.meals" :key="index" class="meal-card" @click="goToRecipe(meal.id)">
+            <img :src="meal.image || 'path/to/default-image.jpg'" alt="Meal Image" v-if="meal.image" />
+            <h3>{{ meal.title }}</h3>
+            <p>Preparation time: {{ meal.readyInMinutes }} minutes</p>
+            <p v-if="getCalories(meal)">Calories: {{ getCalories(meal) }} kcal</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -105,14 +103,14 @@ export default {
       this.currentView = 'main';
     },
     getCalories(meal) {
-    if (!meal.nutrition || !meal.nutrition.nutrients) return null;
-    const caloriesInfo = meal.nutrition.nutrients.find(nutrient => nutrient.title === "Calories");
-    return caloriesInfo ? caloriesInfo.amount : 'No calorie data';
-  },
-  getMealImage(meal) {
-    // Assuming the image is directly under the meal object
-    return meal.image || 'default-image-url.jpg'; // Provide a default if no image is available
-  },
+      if (!meal.nutrition || !meal.nutrition.nutrients) return null;
+      const caloriesInfo = meal.nutrition.nutrients.find(nutrient => nutrient.title === "Calories");
+      return caloriesInfo ? caloriesInfo.amount : 'No calorie data';
+    },
+    getMealImage(meal) {
+      // Assuming the image is directly under the meal object
+      return meal.image || 'default-image-url.jpg'; // Provide a default if no image is available
+    },
     goToRecipe(id) {
       this.$router.push({ name: 'RecipeDetails', params: { id } });
     }
@@ -120,41 +118,51 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .meal-planner-container {
-  margin-top: 187px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 19px;
-  min-height: 62.8vh;
+  padding: 20px;
+  min-height: 77.6vh;
   box-sizing: border-box;
 }
 
 .card {
-  background: #000;
-  color: #c9b373;
+  background: #000; // Keep the background color as black
+  color: #f8f5e1; // Light text color for readability
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 600px;
+  max-width: 800px; // Increased max-width for a wider card
+  margin-top: 136px;
 }
 
-.description, .button-group button {
-  text-align: center;
+h1 {
+  color: #c9b373; // Gold color for headings
+  font-family: 'Lora', serif;
 }
 
-.input-container {
+.description {
+  margin-bottom: 20px;
+  color:#f8f5e1;
+  font-family: 'Roboto', sans-serif;
+}
+
+.date-picker-container, .additional-parameters {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.input-field {
-  margin: 5px;
-  padding:9px;
-  width: 24.2%;
+.input-field, .full-width-input {
+  padding: 12px;
+  border: 1px solid #c9b373;
+  border-radius: 5px;
+  background-color: #2c2c2c;
+  color: #f8f5e1;
 }
 
 .button-group {
@@ -164,14 +172,16 @@ export default {
 }
 
 button {
-  width: 28%;
+  width: auto;
   padding: 10px 20px;
   background-color: #c9b373;
-  color: black;
   border: none;
   border-radius: 5px;
+  color: #2c2c2c;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
 
 button:hover {
@@ -192,10 +202,10 @@ button:hover {
 }
 
 .meal-card {
-  background: #000;
+  background: #000; // Keep the background color as black
   border-radius: 10px;
   padding: 10px;
-  color: #c9b373;
+  color: #c9b373; // Light text color for readability
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 0 10px; /* Space between cards */
   flex: 0 0 auto; /* Do not grow or shrink */
@@ -210,17 +220,14 @@ button:hover {
 }
 
 .meal-plan-header h2 {
-  background: black;
+  background: #2c2c2c;
   padding: 5px 10px;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 20px;
   width: fit-content;
   border-radius: 5px;
-}
-.full-width-input {
-  width: 24%;
-  padding: 8px;
-  margin: 6px;
+  color: #c9b373; // Gold color for headings
+  font-family: 'Lora', serif;
 }
 </style>

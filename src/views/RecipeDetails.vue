@@ -20,6 +20,7 @@
             </div>
           </div>
         </div>
+        
         <div v-html="cleanSummary" class="summary"></div>
         <div class="instructions" v-html="cleanInstructions"></div>
         <div class="ingredients">
@@ -38,6 +39,7 @@
           <div v-for="similar in similarRecipes" :key="similar.id" class="card">
             <router-link :to="{ name: 'RecipeDetails', params: { id: similar.id }}">
               <h3>{{ similar.title }}</h3>
+              <p>Preparation time: {{ similar.readyInMinutes }} mins</p>
             </router-link>
           </div>
         </div>
@@ -79,7 +81,7 @@ export default {
       try {
         const { data } = await apiService.getRecipeDetails(id);
         this.recipe = data;
-        await this.fetchSimilarRecipes(id); // Fetch similar recipes after fetching details
+        await this.fetchSimilarRecipes(id);
       } catch (error) {
         this.error = "There was an error fetching the recipe details.";
       } finally {
@@ -108,7 +110,6 @@ export default {
 };
 </script>
 
-
 <style scoped>
 .recipe-details {
   padding: 60px 20px; /* Increased padding for more spacing */
@@ -120,7 +121,7 @@ export default {
 
 .card {
   background-color: #000; /* Black background color */
-  color: #fff; /* White text color */
+  color: #f8f5e1; /* Light text color */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 30px;
@@ -165,8 +166,8 @@ export default {
 h1 {
   font-size: 36px;
   margin-bottom: 20px;
-  color: #c9b373; /* Updated to match the AllResults.vue style */
-  font-family: 'Roboto', sans-serif; /* Nice font */
+  color: #c9b373; /* Gold text color */
+  font-family: 'Lora', serif; /* Nice font */
 }
 
 img {
@@ -179,20 +180,21 @@ img {
 .summary {
   font-size: 18px;
   line-height: 1.6;
-  color: #ccc; /* Light gray text color for better readability */
+  color: #e0e0e0; /* Light gray text color for better readability */
   margin-bottom: 20px;
 }
 
 h2 {
   font-size: 28px;
   margin-top: 20px;
-  color: #c9b373; /* Updated to match the AllResults.vue style */
+  color: #c9b373; /* Gold text color */
+  font-family: 'Lora', serif; /* Nice font */
 }
 
 .instructions {
   font-size: 18px;
   line-height: 1.6;
-  color: #ccc; /* Light gray text color for better readability */
+  color: #e0e0e0; /* Light gray text color for better readability */
 }
 
 .ingredients ul {
@@ -202,9 +204,9 @@ h2 {
 
 .ingredients li {
   padding: 10px 0;
-  border-bottom: 1px solid #c9b373; /* Updated border color */
+  border-bottom: 1px solid #c9b373; /* Gold border color */
   font-size: 16px;
-  color: #ccc; /* Light gray text color */
+  color: #e0e0e0; /* Light gray text color */
 }
 
 .similar-recipes {
@@ -218,6 +220,7 @@ h2 {
   border-radius: 10px;
   display: inline-block;
   margin-bottom: 20px;
+  font-family: 'Lora', serif; /* Nice font */
 }
 
 .similar-recipes-cards {
@@ -229,15 +232,20 @@ h2 {
 
 .similar-recipes .card {
   background-color: #000;
-  color: #fff;
+  color: #f8f5e1; /* Light text color */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
   width: 250px; /* Set a fixed width for consistency */
-  height: 150px; /* Set a fixed height for consistency */
+  height: auto; /* Allow height to adjust based on content */
   box-sizing: border-box;
   margin-bottom: 20px;
   transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column; /* Arrange content vertically */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .similar-recipes .card:hover {
@@ -246,28 +254,13 @@ h2 {
 }
 
 .similar-recipes .card a {
-  color: #c9b373; /* Updated link color */
+  color: #c9b373; /* Gold link color */
   text-decoration: none; /* Remove underline */
 }
 
-.spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-}
-
-.loader {
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #c9b373;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.similar-recipes .card p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #e0e0e0; /* Light gray text color */
 }
 </style>

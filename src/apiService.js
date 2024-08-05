@@ -65,30 +65,6 @@ const apiService = {
       params: { apiKey }
     });
   },
-  getNutritionalAnalysis(meals) {
-    if (!meals || !meals.length) {
-      console.error("No meals provided for nutritional analysis.");
-      return Promise.reject("No meals provided.");
-    }
-    const ingredients = meals.flatMap(meal => meal.ingredients || []).map(ingredient => ingredient.name).filter(Boolean).join(',');
-    return axios.get(`${baseUrl}/recipes/analyze`, {
-      params: {
-        apiKey,
-        ingredientList: ingredients
-      }
-    });
-  },
-  generateShoppingList(meals) {
-    if (!meals || !meals.length) {
-      console.error("No meals provided for generating a shopping list.");
-      return Promise.reject("No meals provided.");
-    }
-    const ingredients = meals.flatMap(meal => meal.ingredients || []).map(ingredient => ingredient.name).filter(Boolean).join(',');
-    return axios.post(`${baseUrl}/mealplanner/shopping-list`, {
-      apiKey,
-      ingredients
-    });
-  },
   customizeMealPlan(preferences) {
     return axios.get(`${baseUrl}/mealplanner/generate`, {
       params: {

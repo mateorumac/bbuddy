@@ -9,10 +9,11 @@
       </div>
       <div v-else>
         <div class="search-filters card" :class="{ 'with-results': hasResults }">
-          <h1 class="title1">Explore Our Grocery Search!</h1>
-          <p class="card-description">Find and discover grocery items to spice up your meals! <br>This tool enables you to effortlessly find grocery products tailored to your culinary needs</p>
+          <h1 class="title1">Explore Our Grocery Search!</h1><br>
+          <p class="card-description">Discover a world of culinary delights with our innovative grocery search tool! <br>
+            <br>Effortlessly find grocery products tailored to your unique culinary needs and spice up <br> your meals with ease.
+             From exotic spices to fresh produce, elevate your cooking experience today.</p><br>
           <div class="filter-group">
-            <label for="query">What are you craving?</label>
             <input type="text" v-model="searchQuery" id="query" placeholder="Search for grocery products..." class="search-input" />
           </div>
           <button @click="searchGroceries" class="search-button"><i class="fas fa-search"></i> Search Groceries</button>
@@ -82,21 +83,22 @@ export default {
 };
 </script>
 
-
-<style scoped>
-
-.title1{
+<style scoped lang="scss">
+.title1 {
   margin-top: -5px;
+  color: #c9b373;
+  font-family: 'Lora', serif;
 }
+
 .grocery-search-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px; 
+  padding: 60px 20px;
   margin: auto;
-  min-height: 68.4vh;
-  margin-top: 15px;
+  min-height: 62.5vh;
+  margin-top: 70px;
 }
 
 .header-container {
@@ -106,8 +108,9 @@ export default {
 }
 
 p {
-  color: #666;
+  color: #bfa660;
   font-size: 18px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .content-container {
@@ -118,17 +121,18 @@ p {
 }
 
 .search-filters.card {
-  width: 80%;
+  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
   padding: 30px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   background: #000;
   border-radius: 10px;
 }
 
 .card-description {
   margin-bottom: 20px;
-  color: #bfa660;
+  color: #f8f5e1;
 }
 
 .filter-group {
@@ -141,8 +145,10 @@ p {
   width: 96%;
   padding: 12px;
   margin-top: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #c9b373;
   border-radius: 5px;
+  background-color: #2c2c2c;
+  color: #f8f5e1;
 }
 
 .search-button {
@@ -151,9 +157,11 @@ p {
   background-color: #c9b373;
   border: none;
   border-radius: 5px;
-  color: black;
+  color: #2c2c2c;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
 
 .search-button:hover {
@@ -190,7 +198,7 @@ p {
 }
 
 .results-title {
-  background-color: #000;
+  background-color: #2c2c2c;
   color: #c9b373;
   padding: 10px 20px;
   border-radius: 10px;
@@ -203,4 +211,5 @@ p {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 </style>

@@ -8,7 +8,7 @@
           {{ recipe.title }}
         </li>
       </ul>
-      <button v-if="recipes.length > 8" @click="showAllResults">Show All Results</button>
+      <button v-if="recipes.length > 8" class="show-all-results-button" @click="showAllResults">Show All Results</button>
     </div>
   </div>
 </template>
@@ -32,61 +32,59 @@ export default {
     }
   },
   methods: {
-  async searchRecipes() {
-    if (this.searchQuery.length < 3) {
+    async searchRecipes() {
+      if (this.searchQuery.length < 3) {
+        this.recipes = [];
+        return;
+      }
+      this.loading = true;
+      try {
+        const response = await apiService.searchRecipes(this.searchQuery);
+        this.recipes = response.data.results || response.data;
+      } catch (error) {
+        this.error = "There was an error fetching the results.";
+      } finally {
+        this.loading = false;
+      }
+    },
+    closeDropdown() {
       this.recipes = [];
-      return;
-    }
-    this.loading = true;
-    try {
-      const response = await apiService.searchRecipes(this.searchQuery);
-      this.recipes = response.data.results || response.data;
-    } catch (error) {
-      this.error = "There was an error fetching the results.";
-    } finally {
-      this.loading = false;
-    }
-  },
-  closeDropdown() {
-    this.recipes = [];
-  },
-  selectRecipe(id) {
-    this.getRecipeDetails(id);
-    this.closeDropdown();
-    this.searchQuery = ''; // Clear the search query after selecting an option
-  },
-  getRecipeDetails(id) {
-    this.$router.push({ name: 'RecipeDetails', params: { id } });
-  },
-  showAllResults() {
-    this.$router.push({ name: 'AllResults', query: { searchQuery: this.searchQuery } });
-    this.closeDropdown();
-  },
-  goHome() {
-    this.$router.push({ name: 'home' });
-  },
-  spinLogo() {
-    this.isSpinning = true;
-  },
-  stopSpinLogo() {
-    this.isSpinning = false;
-  },
-  handleClickOutside(event) {
-    if (this.$refs.searchContainer && !this.$refs.searchContainer.contains(event.target)) {
+    },
+    selectRecipe(id) {
+      this.getRecipeDetails(id);
       this.closeDropdown();
+      this.searchQuery = ''; // Clear the search query after selecting an option
+    },
+    getRecipeDetails(id) {
+      this.$router.push({ name: 'RecipeDetails', params: { id } });
+    },
+    showAllResults() {
+      this.$router.push({ name: 'AllResults', query: { searchQuery: this.searchQuery } });
+      this.closeDropdown();
+    },
+    goHome() {
+      this.$router.push({ name: 'home' });
+    },
+    spinLogo() {
+      this.isSpinning = true;
+    },
+    stopSpinLogo() {
+      this.isSpinning = false;
+    },
+    handleClickOutside(event) {
+      if (this.$refs.searchContainer && !this.$refs.searchContainer.contains(event.target)) {
+        this.closeDropdown();
+      }
     }
+  },
+  mounted() {
+    document.addEventListener('click', this.handleClickOutside);
+  },
+  beforeDestroy() {
+    document.removeEventListener('click', this.handleClickOutside);
   }
-},
-mounted() {
-  document.addEventListener('click', this.handleClickOutside);
-},
-beforeDestroy() {
-  document.removeEventListener('click', this.handleClickOutside);
-}
-
 };
 </script>
-
 
 <style lang="scss">
 .search-container {
@@ -112,11 +110,17 @@ beforeDestroy() {
     width: 60%;
     max-width: 400px;
     padding: 10px 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #c9b373; // Darker border for better contrast
     border-radius: 30px;
     font-size: 16px;
     outline: none;
     margin-right: 10px;
+    background-color: #2c2c2c; // Dark background for premium look
+    color: #f8f5e1; // Light text color for readability
+
+    &::placeholder {
+      color: #888; // Softer placeholder color
+    }
   }
 
   .dropdown {
@@ -131,7 +135,9 @@ beforeDestroy() {
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Adds shadow for depth
     z-index: 1000;
-    overflow-y: auto;
+    overflow-y: hidden; // Prevent vertical scrollbar
+    overflow-x: hidden; // Prevent horizontal scrollbar
+    padding: 0; // Remove any padding from the dropdown
 
     ul {
       list-style: none;
@@ -141,26 +147,32 @@ beforeDestroy() {
       li {
         padding: 10px;
         cursor: pointer;
-        background: #333; // Darker for contrast
-        color: #fff; // White text for visibility
+        background: #000; // Darker for contrast
+        color: #f8f5e1; // Light text color for visibility
         border-bottom: 1px solid #444; // Separates items visually
         &:hover {
           background: #c9b373; // Highlight color on hover
+          color: #2c2c2c; // Dark text color for better contrast
         }
       }
     }
 
-    button {
+    .show-all-results-button {
       width: 100%;
       padding: 10px;
       background: #c9b373; // Maintains original button color
-      color: white;
+      color: #000; // Dark text color for contrast
       border: none;
       cursor: pointer;
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      margin: 0; // Remove any margin to ensure no extra space
+      border-top: 1px solid #444; // Add top border to separate from list items
       &:hover {
         background: #bfa660; 
       }
     }
   }
 }
+
 </style>

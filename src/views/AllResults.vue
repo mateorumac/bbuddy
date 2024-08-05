@@ -60,26 +60,26 @@ export default {
 
 <style scoped>
 .results-container {
-  padding: 60px 20px; /* Padding around the content */
+  padding: 60px 20px;
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 60px; /* Adjusted margin-top */
+  margin-top: 60px;
 }
 
 .header-container {
-  background-color: #c9b373; /* Background color for the header container */
+  background-color: #000;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
+  color: #c9b373; /* Gold text color */
+  font-family: 'Lora', serif;
+  font-size: 36px;
   margin: 0;
-  color: #000; /* Changed text color to black */
-  font-family: 'Roboto', sans-serif; /* Nice font */
-  font-size: 28px;
 }
 
 .grid {
@@ -88,17 +88,17 @@ h1 {
   gap: 20px;
 
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr); /* Display 4 items per row */
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 .recipe-item {
   padding: 15px;
-  border: 1px solid #444; /* Dark border color */
+  border: 1px solid #444;
   border-radius: 8px;
   text-align: center;
-  background-color: #000; /* Black background color */
-  color: #fff; /* White text color */
+  background-color: #000;
+  color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   img {
@@ -106,32 +106,37 @@ h1 {
     height: auto;
     border-radius: 8px;
     margin-bottom: 15px;
-    object-fit: cover; /* Ensures the image fits nicely */
+    object-fit: cover;
   }
 
   h2 {
     margin: 10px 0;
-    font-size: 22px;
-    color: #c9b373; /* Headline color */
+    font-size: 24px;
+    color: #c9b373;
+    font-family: 'Lora', serif;
   }
 
   p {
     margin: 5px 0;
     font-size: 16px;
-    color: #ccc; /* Light gray text color */
+    color: #ccc;
+    font-family: 'Roboto', sans-serif;
   }
 
   .view-details-button {
     display: inline-block;
     margin-top: 10px;
-    padding: 8px 15px;
-    background: #c9b373; /* Button background color */
-    color: #000; /* Changed text color to black */
-    border-radius: 4px;
+    padding: 10px 20px;
+    background: #c9b373;
+    color: #000;
+    border-radius: 5px;
     text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    transition: background-color 0.3s;
 
     &:hover {
-      background: #bfa660; /* Darker shade for hover effect */
+      background: #bfa660;
     }
   }
 }
