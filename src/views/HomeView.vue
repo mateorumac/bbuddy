@@ -212,9 +212,9 @@ button {
   #home-view {
     padding-left: 0; /* Remove any left padding or margin that might shift content */
     padding-right: 0; /* Remove any right padding or margin */
-    margin-left: -28px; /* Adjust to remove the leftover space from the sidebar */
     margin-right: auto; /* Center content horizontally */
-    width: 100%; /* Expand width to compensate for the left margin */
+    margin-left: -8px;
+    width: 100%; /* Ensure full width usage */
     padding-top: 70px;
   }
 
@@ -232,10 +232,11 @@ button {
   }
 
   .card, .about-card {
-    width: calc(100% - 40px); /* Make the cards slightly smaller than the full width */
-    max-width: 100%; /* Ensure they don’t exceed the container width */
-    margin: 20px auto 0 auto; /* Center the cards */
-    padding: 15px; /* Adjust padding for better fit */
+    width: 90%; /* Make the cards take up 90% of the available width */
+    max-width: 90%; /* Ensure they don’t exceed the container width */
+    margin: 20px auto; /* Center the cards and add spacing on sides */
+    padding: 15px; /* Padding inside the card */
+    box-sizing: border-box; /* Include padding in the width calculation */
   }
 
   .about-card {
@@ -246,8 +247,11 @@ button {
 
 @media (max-width: 480px) {
   .card, .about-card {
-    width: calc(100% - 30px);
-    padding: 10px;
+    width: 85%; /* Further reduce width on smaller screens */
+    max-width: 85%; /* Ensure they don’t exceed the container width */
+    margin: 20px auto; /* Center the cards and add spacing on sides */
+    padding: 10px; /* Padding inside the card */
+    box-sizing: border-box; /* Include padding in the width calculation */
   }
 
   h1 {

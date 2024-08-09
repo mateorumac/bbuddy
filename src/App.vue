@@ -85,14 +85,17 @@ main {
 }
 
 @media (max-width: 768px) {
-  main {
-    padding-left: 0; /* Ensure no padding on the left in mobile view */
-    padding-right: 0; /* Ensure no padding on the right in mobile view */
+  #app {
+    margin-left: -22px; /* Adjust to remove the leftover space from the sidebar */
+    
   }
-
-  .collapsed {
-    margin-left: 0; /* Ensure no margin is added when collapsed in mobile view */
-  }
+  
 }
 
+@media (max-width: 480px) {
+  #app {
+    margin-left: -22px; /* Keep the same adjustment for very small screens */
+    
+}
+}
 </style>

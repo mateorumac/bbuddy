@@ -89,4 +89,11 @@ footer {
   }
 }
 
+@media (max-width: 768px) {
+  .footer-wrapper {
+    margin-left: 22px;
+  }
+  
+}
+
 </style>
