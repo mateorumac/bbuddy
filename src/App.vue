@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <header>
-      <SearchBar />
+      <SearchBar :isCollapsed="isCollapsed" @update:isCollapsed="updateIsCollapsed" />
     </header>
-    <Navbar :isCollapsed="isCollapsed" @toggle="isCollapsed = !isCollapsed" />
     <main :class="{ 'collapsed': isCollapsed }">
       <router-view />
     </main>
@@ -14,26 +13,27 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import Footer from '@/components/Footer.vue';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-
 export default {
   components: {
-    Navbar,
     SearchBar,
     Footer
   },
   data() {
     return {
-      isCollapsed: false
+      isCollapsed: true
     };
+  },
+  methods: {
+    updateIsCollapsed(value) {
+      this.isCollapsed = value;
+    }
   }
 };
 </script>
-
 
 <style lang="scss">
 
@@ -50,7 +50,6 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #c9b373; 
-  width: 100vw;
   overflow-x: hidden;
   background-image: url('@/assets/background.jpg');
   background-size: cover;
@@ -76,8 +75,24 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 70px; /* Adjust based on the height of your fixed header */
+  padding-top: 70px; 
   transition: margin-left 0.3s;
+  margin-left: 0; /* Ensure no space is left on the left side */
+}
+
+.collapsed {
+  margin-left: 0; /* Reset margin-left to 0 to remove empty space */
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-left: 0; /* Ensure no padding on the left in mobile view */
+    padding-right: 0; /* Ensure no padding on the right in mobile view */
+  }
+
+  .collapsed {
+    margin-left: 0; /* Ensure no margin is added when collapsed in mobile view */
+  }
 }
 
 </style>

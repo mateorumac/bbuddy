@@ -23,6 +23,7 @@
   </div>
 </template>
 
+
 <script>
 export default {
   data() {
@@ -98,7 +99,7 @@ main {
   padding: 20px;
   text-align: center;
   color: #ffffff;
-  max-width: 800px; /* Increased max-width for wider card */
+  max-width: 900px; /* Increased max-width for wider card */
   width: 100%;
   transition: box-shadow 0.3s, transform 0.3s;
 
@@ -125,7 +126,7 @@ main {
 }
 
 .about-card {
-  background-color: #2c2c2c;
+  background-color: #000;
   color: #e0e0e0;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -204,6 +205,62 @@ button {
   &:hover {
     background: #bfa660;
     transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  #home-view {
+    padding-left: 0; /* Remove any left padding or margin that might shift content */
+    padding-right: 0; /* Remove any right padding or margin */
+    margin-left: -28px; /* Adjust to remove the leftover space from the sidebar */
+    margin-right: auto; /* Center content horizontally */
+    width: 100%; /* Expand width to compensate for the left margin */
+    padding-top: 70px;
+  }
+
+  .hero-container {
+    width: 100%; /* Ensure the container takes the full width */
+    padding: 10px; /* Adjust padding for mobile view */
+    margin: 0 auto; /* Center the hero container */
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .card, .about-card {
+    width: calc(100% - 40px); /* Make the cards slightly smaller than the full width */
+    max-width: 100%; /* Ensure they don’t exceed the container width */
+    margin: 20px auto 0 auto; /* Center the cards */
+    padding: 15px; /* Adjust padding for better fit */
+  }
+
+  .about-card {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card, .about-card {
+    width: calc(100% - 30px);
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 16px;
   }
 }
 
