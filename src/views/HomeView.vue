@@ -232,11 +232,16 @@ button {
   }
 
   .card, .about-card {
-    width: 90%; /* Make the cards take up 90% of the available width */
-    max-width: 90%; /* Ensure they don’t exceed the container width */
+    width: 85%; /* Make the cards take up 90% of the available width */
+    max-width: 85%; /* Ensure they don’t exceed the container width */
     margin: 20px auto; /* Center the cards and add spacing on sides */
     padding: 15px; /* Padding inside the card */
     box-sizing: border-box; /* Include padding in the width calculation */
+
+    p {
+      font-size: 18px; /* Synchronize paragraph font size */
+      line-height: 1.6; /* Adjust line height for readability */
+    }
   }
 
   .about-card {

@@ -263,4 +263,111 @@ h2 {
   font-size: 16px;
   color: #e0e0e0; /* Light gray text color */
 }
+
+@media (max-width: 768px) {
+  .recipe-details {
+    padding: 40px 10px; /* Adjust padding for mobile view */
+    margin-top: 120px; /* Ensure consistent margin from the top */
+  }
+
+  .card {
+    max-width: 90%; /* Make the card take up 90% of the available width */
+    margin: 0 auto 20px auto; /* Center the card and add space below it */
+    padding: 20px; /* Adjust padding for mobile view */
+    font-size: 18px; /* Adjust font size to match other views */
+    line-height: 1.6; /* Ensure proper readability */
+  }
+
+  h1 {
+    font-size: 28px; /* Adjust heading size */
+    margin-bottom: 15px; /* Adjust margin below heading */
+    text-align: center; /* Center the heading */
+  }
+
+  h2 {
+    font-size: 24px; /* Adjust subheading size */
+    margin-top: 15px; /* Adjust margin above subheading */
+    text-align: center; /* Center the subheading */
+  }
+
+  .similar-recipes-cards {
+    gap: 15px; /* Adjust gap between cards */
+    justify-content: center; /* Center the cards */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Display two recipes per row */
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .similar-recipes .card {
+    width: 100%; /* Ensure cards take up full width within the grid */
+    margin: 0 auto; /* Center the cards within their grid column */
+    padding: 15px; /* Adjust padding for mobile view */
+  }
+
+  .similar-recipes-title {
+    font-size: 24px; /* Adjust title size */
+    margin-bottom: 15px; /* Adjust margin below title */
+    padding: 8px 15px; /* Adjust padding around the title */
+    display: inline-block;
+  }
+
+  .summary, .instructions, .ingredients li {
+    font-size: 16px; /* Adjust font size for readability */
+    line-height: 1.5; /* Adjust line height */
+    margin-bottom: 15px; /* Add margin below content blocks */
+  }
+}
+
+@media (max-width: 480px) {
+  .recipe-details {
+    padding: 30px 5px; /* Further adjust padding for smaller screens */
+    margin-top: 100px;
+    max-width: 100%;
+  }
+
+  .card {
+    max-width: 85%; /* Make the card take up 95% of the available width */
+    padding: 15px; /* Further adjust padding for small screens */
+    font-size: 16px; /* Adjust font size to match smaller screens */
+    line-height: 1.5; /* Ensure proper readability */
+  }
+
+  h1 {
+    font-size: 24px; /* Adjust heading size */
+    margin-bottom: 10px; /* Adjust margin below heading */
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 20px; /* Adjust subheading size */
+    margin-top: 10px; /* Adjust margin above subheading */
+    text-align: center;
+  }
+
+  .similar-recipes-cards {
+    gap: 10px; /* Adjust gap between cards */
+    grid-template-columns: repeat(2, 1fr); /* Still maintain two recipes per row */
+    width: 100%;
+  }
+
+  .similar-recipes .card {
+    width: 100%; /* Ensure cards take up full width within the grid */
+    padding: 10px; /* Further adjust padding for small screens */
+  }
+
+  .similar-recipes-title {
+    font-size: 20px; /* Adjust title size */
+    margin-bottom: 10px; /* Adjust margin below title */
+    padding: 5px 10px; /* Further adjust padding */
+    display: inline-block;
+  }
+
+  .summary, .instructions, .ingredients li {
+    font-size: 14px; /* Adjust font size for smaller screens */
+    line-height: 1.4; /* Adjust line height */
+    margin-bottom: 10px; /* Add margin below content blocks */
+  }
+}
+
 </style>

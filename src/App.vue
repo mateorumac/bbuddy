@@ -86,13 +86,19 @@ main {
 
 @media (max-width: 768px) {
   #app {
-    margin-left: -22px; /* Adjust to remove the leftover space from the sidebar */
+    margin-left: -21px; /* Adjust to remove the leftover space from the sidebar */
     
   }
   
 }
 
 @media (max-width: 480px) {
+  #app {
+    margin-left: -21px; /* Keep the same adjustment for very small screens */
+    
+}
+}
+@media (min-width: 1024px) {
   #app {
     margin-left: -22px; /* Keep the same adjustment for very small screens */
     
