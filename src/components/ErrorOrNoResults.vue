@@ -24,27 +24,27 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 54.7vh; /* Ensures the container takes up most of the viewport height */
+  min-height: 54.7vh; 
   color: #c9b373;
   font-size: 18px;
   margin-bottom: -20px;
-  font-family: 'Roboto', sans-serif; /* Applied consistent font */
+  font-family: 'Roboto', sans-serif; 
 }
 
 .error-image {
   width: 350px;
   height: 350px;
   margin-bottom: 10px;
-  border-radius: 8px; /* Applied consistent border radius */
+  border-radius: 8px; 
 }
 
 .error-message {
-  background-color: #000; /* Black background color */
-  padding: 10px 20px; /* Padding around the message */
+  background-color: #000; 
+  padding: 10px 20px; 
   border-radius: 8px;
-  color: #c9b373; /* Gold text color */
-  font-family: 'Roboto', sans-serif; /* Applied consistent font */
-  font-size: 16px; /* Applied consistent font size */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Applied consistent box shadow */
+  color: #c9b373; 
+  font-family: 'Roboto', sans-serif; 
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 </style>

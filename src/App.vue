@@ -77,16 +77,16 @@ main {
   justify-content: center;
   padding-top: 70px; 
   transition: margin-left 0.3s;
-  margin-left: 0; /* Ensure no space is left on the left side */
+  margin-left: 0; 
 }
 
 .collapsed {
-  margin-left: 0; /* Reset margin-left to 0 to remove empty space */
+  margin-left: 0; 
 }
 
 @media (max-width: 768px) {
   #app {
-    margin-left: -21px; /* Adjust to remove the leftover space from the sidebar */
+    margin-left: -21px; 
     
   }
   
@@ -94,13 +94,13 @@ main {
 
 @media (max-width: 480px) {
   #app {
-    margin-left: -21px; /* Keep the same adjustment for very small screens */
+    margin-left: -21px; 
     
 }
 }
 @media (min-width: 1024px) {
   #app {
-    margin-left: -22px; /* Keep the same adjustment for very small screens */
+    margin-left: -22px; 
     
 }
 }

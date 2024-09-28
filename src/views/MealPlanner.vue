@@ -108,7 +108,6 @@ export default {
       return caloriesInfo ? caloriesInfo.amount : 'No calorie data';
     },
     getMealImage(meal) {
-      // Assuming the image is directly under the meal object
       return meal.image || 'default-image-url.jpg'; // Provide a default if no image is available
     },
     goToRecipe(id) {
@@ -130,18 +129,18 @@ export default {
 }
 
 .card {
-  background: #000; // Keep the background color as black
-  color: #f8f5e1; // Light text color for readability
+  background: #000; 
+  color: #f8f5e1; 
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 800px; // Increased max-width for a wider card
+  max-width: 800px; 
   margin-top: 136px;
 }
 
 h1 {
-  color: #c9b373; // Gold color for headings
+  color: #c9b373; 
   font-family: 'Lora', serif;
 }
 
@@ -195,23 +194,23 @@ button:hover {
 .meal-cards {
   display: flex;
   justify-content: center;
-  flex-wrap: nowrap; /* Ensure all cards are in a single row */
-  overflow-x: auto; /* Allows scrolling horizontally if screen width is small */
+  flex-wrap: nowrap; 
+  overflow-x: auto; 
   overflow-y: hidden;
   padding: 10px;
 }
 
 .meal-card {
-  background: #000; // Keep the background color as black
+  background: #000; 
   border-radius: 10px;
   padding: 10px;
-  color: #c9b373; // Light text color for readability
+  color: #c9b373; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 0 10px; /* Space between cards */
-  flex: 0 0 auto; /* Do not grow or shrink */
+  margin: 0 10px; 
+  flex: 0 0 auto; 
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
-  width: 300px; /* Fixed width for each card */
+  width: 300px; 
 }
 
 .meal-card:hover {
@@ -227,70 +226,69 @@ button:hover {
   margin-bottom: 20px;
   width: fit-content;
   border-radius: 5px;
-  color: #c9b373; // Gold color for headings
+  color: #c9b373; 
   font-family: 'Lora', serif;
 }
 
 @media (max-width: 768px) {
   .meal-planner-container {
-    margin-top: 150px; /* Match the margin from the previous file to move it down */
+    margin-top: 150px; 
   }
 
   .card {
-    width: 90%; /* Make the card take up 90% of the available width */
-    max-width: 90%; /* Ensure it doesn’t exceed the container width */
-    margin: 20px auto; /* Center the card and add spacing on sides */
-    padding: 20px; /* Adjust padding for better fit */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 90%; 
+    max-width: 90%; 
+    margin: 20px auto; 
+    padding: 20px; 
+    box-sizing: border-box; 
   }
 
   .meal-cards {
     display: flex;
-    flex-direction: column; /* Stack meal cards in a column */
-    gap: 15px; /* Space between meal cards */
-    padding: 10px; /* Padding around the meal cards */
-    margin-left: 5%; /* Align the meal cards with the main card */
-    width: 90%; /* Ensure meal cards start from the same point as the main card */
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    margin-left: 5%;
+    width: 90%;
     box-sizing: border-box;
   }
 
   .meal-card {
-    width: 100%; /* Make meal cards take up full width of container */
-    max-width: 100%; /* Ensure meal cards don’t exceed the container width */
-    margin: 0 auto; /* Center the meal cards */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 }
 
 @media (max-width: 480px) {
   .meal-planner-container {
-    margin-top: 150px; /* Match the margin from the previous file to move it down */
+    margin-top: 150px;
   }
 
   .card {
-    width: 85%; /* Further reduce width on smaller screens */
-    max-width: 85%; /* Ensure it doesn’t exceed the container width */
-    margin: 20px auto; /* Center the card and add spacing on sides */
-    padding: 15px; /* Adjust padding for better fit */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 85%;
+    max-width: 85%;
+    margin: 20px auto;
+    padding: 15px;
+    box-sizing: border-box;
   }
 
   .meal-cards {
     display: flex;
-    flex-direction: column; /* Stack meal cards in a column */
-    gap: 10px; /* Space between meal cards */
-    padding: 10px; /* Padding around the meal cards */
-    margin-left: 7.5%; /* Align the meal cards with the main card */
-    width: 85%; /* Ensure meal cards start from the same point as the main card */
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    margin-left: 7.5%;
+    width: 85%;
     box-sizing: border-box;
   }
 
   .meal-card {
-    width: 100%; /* Make meal cards take up full width of container */
-    max-width: 100%; /* Ensure meal cards don’t exceed the container width */
-    margin: 0 auto; /* Center the meal cards */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 }
-
 </style>

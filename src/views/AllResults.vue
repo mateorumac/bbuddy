@@ -50,7 +50,7 @@ export default {
       apiService.searchRecipes(query)
         .then(response => {
           this.recipes = response.data.results;
-          this.loadMoreResults(); // Load initial set of results
+          this.loadMoreResults(); 
         })
         .catch(error => {
           this.error = "There was an error fetching the recipes.";
@@ -85,11 +85,11 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   width: fit-content;
-  margin: 0 auto 20px auto; /* Center align the title container */
+  margin: 0 auto 20px auto; 
 }
 
 h1 {
-  color: #c9b373; /* Gold text color */
+  color: #c9b373; 
   font-family: 'Lora', serif;
   font-size: 36px;
   margin: 0;
@@ -106,7 +106,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 90%; /* Make the card's height consistent */
+  height: 90%; 
   padding: 15px;
   border: 1px solid #444;
   border-radius: 8px;
@@ -117,8 +117,8 @@ h1 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: scale(1.05); /* Slightly enlarge the card */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increase the shadow for a more pronounced effect */
+    transform: scale(1.05); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
   }
 
   img {
@@ -134,7 +134,7 @@ h1 {
     font-size: 24px;
     color: #c9b373;
     font-family: 'Lora', serif;
-    flex-grow: 1; /* Allows the title to take up as much space as needed */
+    flex-grow: 1; 
   }
 
   p {
@@ -142,7 +142,7 @@ h1 {
     font-size: 16px;
     color: #ccc;
     font-family: 'Roboto', sans-serif;
-    flex-grow: 1; /* Allows the description to take up space while keeping the button aligned */
+    flex-grow: 1; 
   }
 
   .view-details-button {
@@ -156,7 +156,7 @@ h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     transition: background-color 0.3s;
-    align-self: center; /* Ensure the button is centered horizontally */
+    align-self: center; 
 
     &:hover {
       background: #bfa660;
@@ -166,9 +166,9 @@ h1 {
 
 .load-more-button {
   display: block;
-  width: 200px; /* Less wide */
-  margin: 20px auto; /* Center aligned */
-  padding: 12px 20px; /* Added height */
+  width: 200px; 
+  margin: 20px auto; 
+  padding: 12px 20px; 
   background-color: #c9b373;
   color: #000;
   border: none;
@@ -192,65 +192,64 @@ h1 {
 
 @media (max-width: 768px) {
   .header-container {
-    width: 90%; /* Ensure the title container isn't wider than the cards */
+    width: 90%; 
     padding: 15px;
     box-sizing: border-box;
-    margin: 0 auto 20px auto; /* Center align the title container */
+    margin: 0 auto 20px auto; 
   }
 
   .recipe-item {
-    width: calc(100% - 20px); /* Ensure cards have some padding from the edges */
-    margin: 10px auto; /* Center the cards with margin */
-    max-width: 350px; /* Set a maximum width to prevent cards from being too wide */
+    width: calc(100% - 20px); 
+    margin: 10px auto; 
+    max-width: 350px; 
   }
 
   h2 {
-    font-size: 24px; /* Adjust font size for smaller screens */
+    font-size: 24px; 
   }
 
   .view-details-button {
-    padding: 10px 20px; /* Adjust button padding */
-    margin-bottom: 20px; /* Add space below the button */
+    padding: 10px 20px; 
+    margin-bottom: 20px; 
   }
 
   .load-more-button {
-    width: 200px; /* Increase the width for better visibility */
-    font-size: 16px; /* Slightly larger font */
-    padding: 12px 24px; /* Add height */
-    margin: 20px auto; /* Center align the button */
+    width: 200px; 
+    font-size: 16px; 
+    padding: 12px 24px;
+    margin: 20px auto; 
   }
 }
 
 @media (max-width: 480px) {
   .header-container {
-    width: 90%; /* Ensure the title container isn't wider than the cards */
+    width: 90%; 
     padding: 15px;
     box-sizing: border-box;
-    margin: 0 auto 20px auto; /* Center align the title container */
+    margin: 0 auto 20px auto; 
   }
   .recipe-item {
-    width: calc(100% - 20px); /* Ensure cards have some padding from the edges */
-    margin: 10px auto; /* Center the cards with margin */
-    max-width: 325px; /* Set a maximum width to prevent cards from being too wide */
+    width: calc(100% - 20px); 
+    margin: 10px auto; 
+    max-width: 325px; 
   }
 
   h2 {
-    font-size: 24px; /* Adjust font size for smaller screens */
+    font-size: 24px; 
   }
 
   .view-details-button {
-    padding: 10px 20px; /* Adjust button padding */
-    margin-bottom: 20px; /* Add space below the button */
+    padding: 10px 20px; 
+    margin-bottom: 20px; 
   }
 
   .load-more-button {
-    width: 200px; /* Increase the width for better visibility */
-    font-size: 16px; /* Slightly larger font */
-    padding: 12px 24px; /* Add height */
-    margin: 20px auto; /* Center align the button */
+    width: 200px; 
+    font-size: 16px; 
+    padding: 12px 24px; 
+    margin: 20px auto; 
     margin-top: 50px;
     margin-bottom: -30px;
   }
 }
-
 </style>

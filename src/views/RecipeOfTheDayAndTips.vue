@@ -1,7 +1,7 @@
 <template>
   <div class="combined-container">
     <div class="header-container">
-      <h1 class="title">Recipe of the Day</h1>
+      <h1 class="titleROTD">Recipe of the Day</h1>
     </div>
     <div class="content-container">
       <LoadingSpinner v-if="loading" loadingText="Loading recipe of the day..." />
@@ -75,10 +75,14 @@ export default {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
-  text-align: center;
+  justify-content: center; 
+  width: 96%;
+  max-width: 960px; 
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.title {
+.titleROTD {
   color: #c9b373;
   font-family: 'Lora', serif;
   font-size: 36px;
@@ -89,6 +93,8 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%; 
+  max-width: 100%; 
 }
 
 .card {
@@ -97,6 +103,7 @@ export default {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 30px;
+  width: 100%; 
 }
 
 .recipe-of-the-day img {
@@ -135,156 +142,154 @@ p {
 
 @media (max-width: 768px) {
   .combined-container {
-    padding: 60px 10px; /* Adjust padding for mobile view */
-    max-width: 90%; /* Set width to 90% of the available space */
+    padding: 60px 10px;
+    max-width: 90%;
     margin: 0 auto;
-    margin-top: 70px; /* Add consistent margin from the top */
+    margin-top: 70px;
   }
 
   .header-container {
-  background: #000;
-  padding: 10px 10px;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: fit-content;
-  border-radius: 5px;
-  color: #c9b373;
-  font-family: 'Lora', serif;
-  }
-
-  .title {
-    font-size: 28px; /* Adjust title font size for mobile view */
-    margin: 0 auto; /* Center the title within its parent */
-    padding: 5px 15px; /* Add padding to wrap the text inside the rectangle */
-    word-wrap: break-word; /* Ensure text wraps properly */
-    text-align: center; /* Ensure the title is centered */
-    background-color: #000; /* Ensure the rectangle is black */
-    display: inline-block; /* Make the container wrap the content */
-    border-radius: 5px; /* Slight border radius */
-    
-  }
-
-  .content-container {
-    gap: 15px; /* Reduce gap between content items */
-    width: 90%; /* Match the width to the header container */
-    margin: 0 auto; /* Center the content container */
-  }
-
-  .card {
-    padding: 20px; /* Adjust padding for better fit on mobile */
-    width: 100%; /* Ensure the card takes up full width of the container */
-    margin: 0 auto 20px auto; /* Center the card and add space below it */
-    box-sizing: border-box; /* Ensure padding is included in width calculation */
-    font-size: 18px; /* Increase the font size to match the other views */
-    line-height: 1.6; /* Ensure proper readability */
-  }
-
-  .recipe-of-the-day img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px; /* Slightly reduce border radius for smaller screens */
-    margin-bottom: 15px; /* Adjust margin below the image */
-  }
-
-  h3 {
-    font-size: 22px; /* Adjust heading font size for mobile */
-    margin-bottom: 10px; /* Adjust margin below heading */
-    text-align: center; /* Center align the text */
-    color: #c9b373; /* Gold color for consistency */
-    font-family: 'Lora', serif; /* Consistent font for headings */
-  }
-
-  p {
-    font-size: 18px; /* Adjust paragraph font size to be consistent with other views */
-    line-height: 1.6; /* Ensure readability with proper line height */
-    margin-bottom: 15px; /* Adjust margin below paragraph */
-  }
-
-  .view-details-button {
-    width: 100%; /* Make button take up full width of the card */
-    padding: 10px 0; /* Adjust padding for mobile */
-    font-size: 18px; /* Adjust font size for button text */
-    text-align: center; /* Center text in the button */
-    box-sizing: border-box; /* Ensure padding is included in width calculation */
-  }
-}
-
-@media (max-width: 480px) {
-  .combined-container {
-    padding: 60px 5px; /* Further adjust padding for very small screens */
-    max-width: 95%; /* Set width to 95% of the available space */
+    background: #000;
+    padding: 10px 10px;
     margin: 0 auto;
-    margin-top: 70px; /* Consistent margin from the top */
-  }
-
-  .header-container {
-  background: #000;
-  padding: 10px 10px;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: fit-content;
-  border-radius: 5px;
-  color: #c9b373;
-  font-family: 'Lora', serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: fit-content;
+    border-radius: 5px;
+    color: #c9b373;
+    font-family: 'Lora', serif;
   }
 
   .title {
-    font-size: 24px; /* Further adjust title font size */
-    margin: 0 auto; /* Center the title within its parent */
-    padding: 5px 15px; /* Add padding to wrap the text inside the rectangle */
-    word-wrap: break-word; /* Ensure text wraps properly */
-    text-align: center; /* Ensure the title is centered */
-    background-color: #000; /* Ensure the rectangle is black */
-    display: inline-block; /* Make the container wrap the content */
-    border-radius: 5px; /* Slight border radius */
-    width: fit-content; /* Make the width fit the content */
+    font-size: 28px;
+    margin: 0 auto;
+    padding: 5px 15px;
+    word-wrap: break-word;
+    text-align: center;
+    background-color: #000;
+    display: inline-block;
+    border-radius: 5px;
   }
 
   .content-container {
-    gap: 10px; /* Further reduce gap between content items */
-    width: 95%; /* Match the width to the header container */
-    margin: 0 auto; /* Center the content container */
+    gap: 15px;
+    width: 90%;
+    margin: 0 auto;
   }
 
   .card {
-    padding: 15px; /* Further adjust padding */
-    width: 100%; /* Ensure the card takes up full width of the container */
-    margin: 0 auto 20px auto; /* Center the card and add space below it */
-    box-sizing: border-box; /* Ensure padding is included in width calculation */
-    font-size: 18px; /* Increase the font size to match the other views */
-    line-height: 1.6; /* Ensure proper readability */
+    padding: 20px;
+    width: 100%;
+    margin: 0 auto 20px auto;
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 1.6;
   }
 
   .recipe-of-the-day img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    margin-bottom: 10px; /* Further adjust margin below the image */
+    margin-bottom: 15px;
   }
 
   h3 {
-    font-size: 20px; /* Further adjust heading font size */
-    margin-bottom: 8px; /* Further adjust margin below heading */
-    text-align: center; /* Center align the text */
-    color: #c9b373; /* Gold color for consistency */
-    font-family: 'Lora', serif; /* Consistent font for headings */
+    font-size: 22px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #c9b373;
+    font-family: 'Lora', serif;
   }
 
   p {
-    font-size: 18px; /* Adjust paragraph font size to be consistent with other views */
-    line-height: 1.6; /* Ensure readability with proper line height */
-    margin-bottom: 12px; /* Further adjust margin below paragraph */
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
   }
 
   .view-details-button {
-    width: 100%; /* Make button take up full width of the card */
-    padding: 10px 0; /* Adjust padding for button */
-    font-size: 18px; /* Further adjust font size */
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
     text-align: center;
-    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    box-sizing: border-box;
   }
 }
 
+@media (max-width: 480px) {
+  .combined-container {
+    padding: 60px 5px;
+    max-width: 95%;
+    margin: 0 auto;
+    margin-top: 70px;
+  }
+
+  .header-container {
+    background: #000;
+    padding: 10px 10px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: fit-content;
+    border-radius: 5px;
+    color: #c9b373;
+    font-family: 'Lora', serif;
+  }
+
+  .title {
+    font-size: 24px;
+    margin: 0 auto;
+    padding: 5px 15px;
+    word-wrap: break-word;
+    text-align: center;
+    background-color: #000;
+    display: inline-block;
+    border-radius: 5px;
+    width: fit-content;
+  }
+
+  .content-container {
+    gap: 10px;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .card {
+    padding: 15px;
+    width: 100%;
+    margin: 0 auto 20px auto;
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .recipe-of-the-day img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    text-align: center;
+    color: #c9b373;
+    font-family: 'Lora', serif;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .view-details-button {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
 </style>

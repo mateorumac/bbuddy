@@ -112,35 +112,35 @@ export default {
 
 <style scoped>
 .recipe-details {
-  padding: 60px 20px; /* Increased padding for more spacing */
+  padding: 60px 20px; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px; /* Margin from the top */
+  margin-top: 60px; 
 }
 
 .card {
-  background-color: #000; /* Black background color */
-  color: #f8f5e1; /* Light text color */
+  background-color: #000; 
+  color: #f8f5e1; 
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 30px;
   max-width: 800px;
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 20px; /* Added margin between cards */
+  margin-bottom: 20px; 
 }
 
 .recipe-info-container {
   display: flex;
-  justify-content: center; /* Center align the image container */
+  justify-content: center; 
   align-items: center;
 }
 
 .image-container {
   position: relative;
   display: flex;
-  justify-content: center; /* Center align the image within the container */
+  justify-content: center; 
 }
 
 .notifications {
@@ -153,11 +153,11 @@ export default {
 }
 
 .notification {
-  background-color: #c9b373; /* Notification background color */
-  color: #000; /* Notification text color */
+  background-color: #c9b373; 
+  color: #000; 
   border-radius: 50%;
   padding: 10px 20px;
-  margin-bottom: 10px; /* Space between notifications */
+  margin-bottom: 10px; 
   text-align: center;
   font-weight: bold;
   width: max-content;
@@ -166,12 +166,12 @@ export default {
 h1 {
   font-size: 36px;
   margin-bottom: 20px;
-  color: #c9b373; /* Gold text color */
-  font-family: 'Lora', serif; /* Nice font */
+  color: #c9b373; 
+  font-family: 'Lora', serif; 
 }
 
 img {
-  max-width: 100%; /* Ensure the image fits within the container */
+  max-width: 100%; 
   height: auto;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -180,21 +180,21 @@ img {
 .summary {
   font-size: 18px;
   line-height: 1.6;
-  color: #e0e0e0; /* Light gray text color for better readability */
+  color: #e0e0e0; 
   margin-bottom: 20px;
 }
 
 h2 {
   font-size: 28px;
   margin-top: 20px;
-  color: #c9b373; /* Gold text color */
-  font-family: 'Lora', serif; /* Nice font */
+  color: #c9b373; 
+  font-family: 'Lora', serif; 
 }
 
 .instructions {
   font-size: 18px;
   line-height: 1.6;
-  color: #e0e0e0; /* Light gray text color for better readability */
+  color: #e0e0e0; 
 }
 
 .ingredients ul {
@@ -204,9 +204,9 @@ h2 {
 
 .ingredients li {
   padding: 10px 0;
-  border-bottom: 1px solid #c9b373; /* Gold border color */
+  border-bottom: 1px solid #c9b373; 
   font-size: 16px;
-  color: #e0e0e0; /* Light gray text color */
+  color: #e0e0e0; 
 }
 
 .similar-recipes {
@@ -220,7 +220,7 @@ h2 {
   border-radius: 10px;
   display: inline-block;
   margin-bottom: 20px;
-  font-family: 'Lora', serif; /* Nice font */
+  font-family: 'Lora', serif; 
 }
 
 .similar-recipes-cards {
@@ -232,17 +232,17 @@ h2 {
 
 .similar-recipes .card {
   background-color: #000;
-  color: #f8f5e1; /* Light text color */
+  color: #f8f5e1; 
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  width: 250px; /* Set a fixed width for consistency */
-  height: auto; /* Allow height to adjust based on content */
+  width: 250px; 
+  height: auto; 
   box-sizing: border-box;
   margin-bottom: 20px;
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
-  flex-direction: column; /* Arrange content vertically */
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -254,120 +254,119 @@ h2 {
 }
 
 .similar-recipes .card a {
-  color: #c9b373; /* Gold link color */
-  text-decoration: none; /* Remove underline */
+  color: #c9b373; 
+  text-decoration: none;
 }
 
 .similar-recipes .card p {
   margin-top: 10px;
   font-size: 16px;
-  color: #e0e0e0; /* Light gray text color */
+  color: #e0e0e0; 
 }
 
 @media (max-width: 768px) {
   .recipe-details {
-    padding: 40px 10px; /* Adjust padding for mobile view */
-    margin-top: 120px; /* Ensure consistent margin from the top */
+    padding: 40px 10px; 
+    margin-top: 120px; 
   }
 
   .card {
-    max-width: 90%; /* Make the card take up 90% of the available width */
-    margin: 0 auto 20px auto; /* Center the card and add space below it */
-    padding: 20px; /* Adjust padding for mobile view */
-    font-size: 18px; /* Adjust font size to match other views */
-    line-height: 1.6; /* Ensure proper readability */
+    max-width: 90%; 
+    margin: 0 auto 20px auto; 
+    padding: 20px; 
+    font-size: 18px; 
+    line-height: 1.6; 
   }
 
   h1 {
-    font-size: 28px; /* Adjust heading size */
-    margin-bottom: 15px; /* Adjust margin below heading */
-    text-align: center; /* Center the heading */
+    font-size: 28px; 
+    margin-bottom: 15px; 
+    text-align: center; 
   }
 
   h2 {
-    font-size: 24px; /* Adjust subheading size */
-    margin-top: 15px; /* Adjust margin above subheading */
-    text-align: center; /* Center the subheading */
+    font-size: 24px; 
+    margin-top: 15px; 
+    text-align: center; 
   }
 
   .similar-recipes-cards {
-    gap: 15px; /* Adjust gap between cards */
-    justify-content: center; /* Center the cards */
+    gap: 15px; 
+    justify-content: center; 
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Display two recipes per row */
+    grid-template-columns: repeat(2, 1fr); 
     margin: 0 auto;
     width: 100%;
   }
 
   .similar-recipes .card {
-    width: 100%; /* Ensure cards take up full width within the grid */
-    margin: 0 auto; /* Center the cards within their grid column */
-    padding: 15px; /* Adjust padding for mobile view */
+    width: 100%; 
+    margin: 0 auto; 
+    padding: 15px; 
   }
 
   .similar-recipes-title {
-    font-size: 24px; /* Adjust title size */
-    margin-bottom: 15px; /* Adjust margin below title */
-    padding: 8px 15px; /* Adjust padding around the title */
+    font-size: 24px; 
+    margin-bottom: 15px; 
+    padding: 8px 15px; 
     display: inline-block;
   }
 
   .summary, .instructions, .ingredients li {
-    font-size: 16px; /* Adjust font size for readability */
-    line-height: 1.5; /* Adjust line height */
-    margin-bottom: 15px; /* Add margin below content blocks */
+    font-size: 16px; 
+    line-height: 1.5; 
+    margin-bottom: 15px; 
   }
 }
 
 @media (max-width: 480px) {
   .recipe-details {
-    padding: 30px 5px; /* Further adjust padding for smaller screens */
+    padding: 30px 5px; 
     margin-top: 100px;
     max-width: 100%;
   }
 
   .card {
-    max-width: 85%; /* Make the card take up 95% of the available width */
-    padding: 15px; /* Further adjust padding for small screens */
-    font-size: 16px; /* Adjust font size to match smaller screens */
-    line-height: 1.5; /* Ensure proper readability */
+    max-width: 85%; 
+    padding: 15px; 
+    font-size: 16px; 
+    line-height: 1.5; 
   }
 
   h1 {
-    font-size: 24px; /* Adjust heading size */
-    margin-bottom: 10px; /* Adjust margin below heading */
+    font-size: 24px; 
+    margin-bottom: 10px;
     text-align: center;
   }
 
   h2 {
-    font-size: 20px; /* Adjust subheading size */
-    margin-top: 10px; /* Adjust margin above subheading */
+    font-size: 20px; 
+    margin-top: 10px; 
     text-align: center;
   }
 
   .similar-recipes-cards {
-    gap: 10px; /* Adjust gap between cards */
-    grid-template-columns: repeat(2, 1fr); /* Still maintain two recipes per row */
+    gap: 10px; 
+    grid-template-columns: repeat(2, 1fr); 
     width: 100%;
   }
 
   .similar-recipes .card {
-    width: 100%; /* Ensure cards take up full width within the grid */
-    padding: 10px; /* Further adjust padding for small screens */
+    width: 100%; 
+    padding: 10px; 
   }
 
   .similar-recipes-title {
-    font-size: 20px; /* Adjust title size */
-    margin-bottom: 10px; /* Adjust margin below title */
-    padding: 5px 10px; /* Further adjust padding */
+    font-size: 20px; 
+    margin-bottom: 10px; 
+    padding: 5px 10px; 
     display: inline-block;
   }
 
   .summary, .instructions, .ingredients li {
-    font-size: 14px; /* Adjust font size for smaller screens */
-    line-height: 1.4; /* Adjust line height */
-    margin-bottom: 10px; /* Add margin below content blocks */
+    font-size: 14px; 
+    line-height: 1.4; 
+    margin-bottom: 10px; 
   }
 }
-
 </style>

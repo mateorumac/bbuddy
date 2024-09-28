@@ -36,7 +36,7 @@ export default {
       loading: false,
       error: null,
       isSpinning: false,
-      isCollapsed: true // Controls whether the navbar is collapsed or not
+      isCollapsed: true
     };
   },
   computed: {
@@ -66,7 +66,7 @@ export default {
     selectRecipe(id) {
       this.getRecipeDetails(id);
       this.closeDropdown();
-      this.searchQuery = ''; // Clear the search query after selecting an option
+      this.searchQuery = '';
     },
     getRecipeDetails(id) {
       this.$router.push({ name: 'RecipeDetails', params: { id } });
@@ -85,15 +85,15 @@ export default {
       this.isSpinning = false;
     },
     toggleNav() {
-      this.isCollapsed = !this.isCollapsed; // Toggle the navbar visibility
+      this.isCollapsed = !this.isCollapsed;
     },
     closeNav() {
-      this.isCollapsed = true; // Close the navbar
+      this.isCollapsed = true;
     },
     handleClickOutside(event) {
       if (this.$refs.searchContainer && !this.$refs.searchContainer.contains(event.target)) {
-        this.closeNav(); // Close the dropdown if clicking outside
-        this.closeDropdown(); // Close the recipe dropdown as well
+        this.closeNav();
+        this.closeDropdown();
       }
     }
   },
@@ -122,8 +122,8 @@ export default {
   align-items: center;
   position: relative;
   flex: 1;
-  margin-left: 24%; /* Adjust this value to bring the search bar and logo more to the right */
-  
+  margin-left: 24%;
+
   .logo {
     width: 60px;
     height: 60px;
@@ -154,7 +154,7 @@ export default {
   }
 
   .collapse-btn {
-    display: none; /* Initially hidden, only shown in mobile view */
+    display: none;
     background: none;
     border: none;
     color: #c9b373;
@@ -219,21 +219,21 @@ export default {
   display: none;
   flex-direction: column;
   position: absolute;
-  top: 90px; /* Position the navbar dropdown further down */
-  right: 20px; /* Margin from the right side */
+  top: 90px;
+  right: 20px;
   background: #000;
   border: 1px solid #c9b373;
   border-radius: 4px;
   padding: 10px;
-  width: 150px; /* Less wide for mobile view */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for a better look */
-  margin-right: 20px; /* Added margin from the screen edge */
+  width: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
 
   a {
     color: #c9b373;
-    text-decoration: none; /* Remove underline from links */
+    text-decoration: none;
     padding: 10px;
-    text-align: center; /* Center-align text in mobile view */
+    text-align: center;
     border-bottom: 1px solid #444;
 
     &:hover {
@@ -242,7 +242,7 @@ export default {
     }
 
     &:visited {
-      color: #f8f5e1; /* Ensure visited links don't turn purple */
+      color: #f8f5e1;
     }
   }
 
@@ -254,31 +254,32 @@ export default {
 @media (max-width: 768px) {
   .search-container {
     flex: 1;
-    margin-left: 0; /* Reset the margin for responsiveness */
+    margin-left: 0;
 
     .collapse-btn {
-      display: block; /* Show the burger button in mobile view */
+      display: block;
       padding-right: 20px;
-      padding-left: 20px; /* Ensure the button has enough padding in mobile view */
-      margin-right: 12px; /* Add more margin to separate it from the screen edge */
+      padding-left: 20px;
+      margin-right: 12px;
     }
     .dropdown {
-    left: 47%;
-    transform: translateX(-50%);
-    width: 70%;
-    max-width: 350px; }
+      left: 47%;
+      transform: translateX(-50%);
+      width: 70%;
+      max-width: 350px;
+    }
   }
 
   .navbar {
     a {
-      color: #f8f5e1; /* Set text color to white-ish for nav links in mobile view */
+      color: #f8f5e1;
       text-align: center;
       padding: 10px;
       text-decoration: none;
       border-bottom: 1px solid #c9b373;
 
       &:visited {
-        color: #f8f5e1; /* Ensure visited links remain white-ish */
+        color: #f8f5e1;
       }
     }
   }
@@ -287,8 +288,8 @@ export default {
 @media (max-width: 480px) {
   .navbar {
     a {
-      font-size: 14px; /* Slightly smaller font size for very small screens */
-      padding: 8px; /* Adjust padding for smaller screens */
+      font-size: 14px;
+      padding: 8px;
     }
   }
 }
@@ -297,55 +298,53 @@ export default {
   .navbar {
     display: flex;
     margin-left: auto;
-    flex-direction: row; /* Align nav links horizontally for monitor view */
-    position: static; /* Ensure navbar is positioned normally in monitor view */
-    top: auto; /* Reset positioning for monitor view */
-    right: auto; /* Reset positioning for monitor view */
-    background: none; /* Remove background for monitor view */
-    border: none; /* Remove border for monitor view */
+    flex-direction: row;
+    position: static;
+    top: auto;
+    right: auto;
+    background: none;
+    border: none;
     padding-right: 50px;
-    width: auto; /* Let width be determined by content */
-    box-shadow: none; /* Remove shadow for monitor view */
+    width: auto;
+    box-shadow: none;
 
     a {
-      text-align: left; /* Align text normally */
-      
-      padding: 0 15px; /* Add padding between links */
-      color: #f8f5e1; /* Ensure the correct color */
+      text-align: left;
+      padding: 0 15px;
+      color: #f8f5e1;
       font-weight: bold;
-      border-bottom: none; /* Remove border for monitor view */
+      border-bottom: none;
       background-color: transparent;
-      position: relative; /* Needed for the ::after pseudo-element */
+      position: relative;
 
       &:hover {
-        background-color: transparent; /* No background color on hover */
-        color: #f8f5e1; /* Keep text color consistent */
+        background-color: transparent;
+        color: #f8f5e1;
       }
 
       &:hover::after {
-        transform: scaleX(1); /* Scale up the line on hover */
+        transform: scaleX(1);
       }
 
       &::after {
         content: '';
         display: block;
         position: absolute;
-        bottom: -5px; /* Position the line slightly below the text */
-        left: 0px; /* Extend the line slightly to the left */
+        bottom: -5px;
+        left: 0px;
         right: -5px;
         width: 100%;
-        height: 2px; /* Line height */
-        background-color: #c9b373; /* Gold color */
-        transform: scaleX(0); /* Start with the line hidden */
-        transform-origin: bottom left; /* Animate from the left */
-        transition: transform 0.3s ease; /* Smooth transition */
+        height: 2px;
+        background-color: #c9b373;
+        transform: scaleX(0);
+        transform-origin: bottom left;
+        transition: transform 0.3s ease;
       }
 
       &:visited {
-        color: #f8f5e1; /* Ensure visited links don't turn purple */
+        color: #f8f5e1;
       }
     }
   }
 }
-
 </style>

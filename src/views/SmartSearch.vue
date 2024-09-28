@@ -194,7 +194,7 @@ p {
 }
 
 .search-filters.card.with-results {
-  margin-top: 60px; /* Adds space when results are present */
+  margin-top: 60px;
 }
 
 .results-title {
@@ -214,11 +214,11 @@ p {
 
 @media (max-width: 768px) {
   .search-filters.card {
-    width: 90%; /* Make the card take up 90% of the available width */
-    max-width: 90%; /* Ensure it doesn’t exceed the container width */
-    margin: 20px auto; /* Center the card and add spacing on sides */
-    padding: 20px; /* Adjust padding for better fit */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 90%;
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
   }
 
   h1.title1 {
@@ -227,126 +227,127 @@ p {
   }
 
   .card-description {
-    font-size: 18px; /* Ensure consistent font size */
-    line-height: 1.6; /* Adjust line height for readability */
-    margin-bottom: 15px; /* Reduce margin between the text and input field */
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
   }
 
   .search-input {
-    width: 100%; /* Make the input field take up full width inside the card */
-    padding: 12px; /* Adjust padding for better spacing */
-    margin-top: 0px; /* Reduce margin above the input field */
+    width: 100%;
+    padding: 12px;
+    margin-top: 0px;
     margin-bottom: 0px;
     border: 1px solid #c9b373;
     border-radius: 5px;
     background-color: #2c2c2c;
     color: #f8f5e1;
-    box-sizing: border-box; /* Include padding in the width calculation */
+    box-sizing: border-box;
   }
 
   .search-button {
-    width: 100%; /* Make the button take up full width inside the card */
-    padding: 12px; /* Adjust padding for better spacing */
-    font-size: 16px; /* Adjust font size */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    box-sizing: border-box;
   }
 
   .results-container {
-    width: 90%; /* Make the results container take up 90% of the available width */
-    max-width: 90%; /* Ensure it doesn’t exceed the container width */
-    margin: 20px auto; /* Center the container and add spacing on sides */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 90%;
+    max-width: 90%;
+    margin: 20px auto;
+    box-sizing: border-box;
   }
 
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust the grid columns for mobile view */
-    gap: 15px; /* Reduce gap between items */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
   }
 
   .grocery-item {
-    padding: 15px; /* Adjust padding inside each grocery item */
-    border-radius: 8px; /* Slightly reduce border-radius for smaller screens */
+    padding: 15px;
+    border-radius: 8px;
   }
 
   .grocery-item img {
-    width: 100%; /* Ensure image takes up full width of the grocery item */
+    width: 100%;
     height: auto;
     border-radius: 5px;
   }
 
   .results-title {
-    font-size: 20px; /* Adjust font size for results title */
-    margin-bottom: 20px; /* Adjust margin below the results title */
-    text-align: center; /* Center align the results title */
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
   .search-filters.card {
-    width: 85%; /* Further reduce width on smaller screens */
-    max-width: 85%; /* Ensure it doesn’t exceed the container width */
-    margin: 20px auto; /* Center the card and add spacing on sides */
-    padding: 15px; /* Adjust padding for better fit */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 85%;
+    max-width: 85%;
+    margin: 20px auto;
+    padding: 15px;
+    box-sizing: border-box;
   }
 
   h1.title1 {
     padding-top: 10px;
-    margin-bottom: -10px; /* Reduce margin between h1 and the text for smaller screens */
+    margin-bottom: -10px;
   }
 
   .card-description {
-    font-size: 16px; /* Adjust font size for smaller screens */
-    line-height: 1.6; /* Adjust line height for readability */
-    margin-bottom: 12px; /* Reduce margin between the text and input field */
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
   }
 
   .search-input {
-    width: 100%; /* Make the input field take up full width inside the card */
-    padding: 10px; /* Adjust padding for smaller screens */
-    margin-top: 0px; /* Reduce margin above the input field */
-    margin-bottom: 0px; /* Reduce margin below the input field */
+    width: 100%;
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     border: 1px solid #c9b373;
     border-radius: 5px;
     background-color: #2c2c2c;
     color: #f8f5e1;
-    box-sizing: border-box; /* Include padding in the width calculation */
+    box-sizing: border-box;
   }
 
   .search-button {
-    width: 100%; /* Make the button take up full width inside the card */
-    padding: 10px; /* Adjust padding for smaller screens */
-    font-size: 16px; /* Adjust font size */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
   }
 
   .results-container {
-    width: 85%; /* Further reduce width on smaller screens */
-    max-width: 85%; /* Ensure it doesn’t exceed the container width */
-    margin: 20px auto; /* Center the container and add spacing on sides */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 85%;
+    max-width: 85%;
+    margin: 20px auto;
+    box-sizing: border-box;
   }
 
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Adjust the grid columns for very small screens */
-    gap: 10px; /* Reduce gap between items */
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
   }
 
   .grocery-item {
-    padding: 10px; /* Further adjust padding inside each grocery item */
-    border-radius: 6px; /* Slightly reduce border-radius for very small screens */
+    padding: 10px;
+    border-radius: 6px;
   }
 
   .grocery-item img {
-    width: 100%; /* Ensure image takes up full width of the grocery item */
+    width: 100%;
     height: auto;
     border-radius: 5px;
   }
 
   .results-title {
-    font-size: 18px; /* Adjust font size for results title on smaller screens */
-    margin-bottom: 15px; /* Adjust margin below the results title */
-    text-align: center; /* Center align the results title */
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: center;
   }
 }
 </style>
+

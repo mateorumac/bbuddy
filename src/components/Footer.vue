@@ -26,13 +26,13 @@ export default {
 }
 
 footer {
-  background: #000; // Match the dark background color
-  color: #f8f5e1; // Light text color for readability
+  background: #000; 
+  color: #f8f5e1; 
   text-align: center;
   padding: 20px 0;
   width: 100%;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-  border-top: 2px solid #c9b373; // Gold border for a premium touch
+  border-top: 2px solid #c9b373; 
 
   .footer-content {
     display: flex;
@@ -43,7 +43,7 @@ footer {
     p {
       margin: 0;
       padding: 5px 0;
-      color: #c9b373; // Gold text color for contrast
+      color: #c9b373; 
     }
 
     .social-icons {
@@ -52,7 +52,7 @@ footer {
       gap: 20px;
 
       a {
-        color: #c9b373; // Gold color for icons
+        color: #c9b373; 
         font-size: 20px;
         position: relative;
         transition: color 0.3s;
@@ -82,7 +82,7 @@ footer {
         }
 
         &:hover {
-          color: #bfa660; // Slightly darker gold on hover
+          color: #bfa660; 
         }
       }
     }

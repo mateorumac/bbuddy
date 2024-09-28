@@ -22,8 +22,6 @@
     </main>
   </div>
 </template>
-
-
 <script>
 export default {
   data() {
@@ -39,8 +37,6 @@ export default {
   }
 };
 </script>
-
-
 <style lang="scss">
 html {
   scroll-behavior: smooth;
@@ -81,7 +77,7 @@ main {
 .hero-container {
   margin-top: 60px;
   width: 100%;
-  max-width: 900px; /* Increased max-width for wider card */
+  max-width: 900px;
   padding: 20px;
 }
 
@@ -99,14 +95,14 @@ main {
   padding: 20px;
   text-align: center;
   color: #ffffff;
-  max-width: 900px; /* Increased max-width for wider card */
+  max-width: 900px;
   width: 100%;
   transition: box-shadow 0.3s, transform 0.3s;
+}
 
-  &:hover {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-  }
+.card:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
 @keyframes fadeInUp {
@@ -133,24 +129,24 @@ main {
   padding: 20px;
   margin-top: 20px;
   text-align: left;
-  max-width: 900px; /* Increased max-width for wider card */
+  max-width: 900px;
   width: 100%;
+}
 
-  h1 {
-    color: #c9b373;
-    font-size: 28px;
-    margin-bottom: 15px;
-    font-family: 'Lora', serif;
-    text-align: center;
-  }
+.about-card h1 {
+  color: #c9b373;
+  font-size: 28px;
+  margin-bottom: 15px;
+  font-family: 'Lora', serif;
+  text-align: center;
+}
 
-  p {
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 15px;
-    font-family: 'Roboto', sans-serif;
-    color: #e0e0e0;
-  }
+.about-card p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  font-family: 'Roboto', sans-serif;
+  color: #e0e0e0;
 }
 
 .hero-logo {
@@ -159,20 +155,20 @@ main {
   margin-bottom: -50px;
   margin-top: -40px;
   animation: bounceIn 1s ease-out;
+}
 
-  @keyframes bounceIn {
-    0%, 20%, 40%, 60%, 80%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    70% {
-      transform: translateY(-5px);
-    }
-    90% {
-      transform: translateY(-2px);
-    }
+@keyframes bounceIn {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  70% {
+    transform: translateY(-5px);
+  }
+  90% {
+    transform: translateY(-2px);
   }
 }
 
@@ -201,27 +197,27 @@ button {
   margin-top: 10px;
   margin-bottom: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-  &:hover {
-    background: #bfa660;
-    transform: scale(1.05);
-  }
+button:hover {
+  background: #bfa660;
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
   #home-view {
-    padding-left: 0; /* Remove any left padding or margin that might shift content */
-    padding-right: 0; /* Remove any right padding or margin */
-    margin-right: auto; /* Center content horizontally */
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: auto;
     margin-left: -8px;
-    width: 100%; /* Ensure full width usage */
+    width: 100%;
     padding-top: 70px;
   }
 
   .hero-container {
-    width: 100%; /* Ensure the container takes the full width */
-    padding: 10px; /* Adjust padding for mobile view */
-    margin: 0 auto; /* Center the hero container */
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto;
   }
 
   .hero-content {
@@ -232,31 +228,31 @@ button {
   }
 
   .card, .about-card {
-    width: 85%; /* Make the cards take up 90% of the available width */
-    max-width: 85%; /* Ensure they don’t exceed the container width */
-    margin: 20px auto; /* Center the cards and add spacing on sides */
-    padding: 15px; /* Padding inside the card */
-    box-sizing: border-box; /* Include padding in the width calculation */
-
-    p {
-      font-size: 18px; /* Synchronize paragraph font size */
-      line-height: 1.6; /* Adjust line height for readability */
-    }
+    width: 85%;
+    max-width: 85%;
+    margin: 20px auto;
+    padding: 15px;
+    box-sizing: border-box;
   }
 
   .about-card {
     text-align: center;
     margin-top: 20px;
   }
+
+  .about-card p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
 }
 
 @media (max-width: 480px) {
   .card, .about-card {
-    width: 85%; /* Further reduce width on smaller screens */
-    max-width: 85%; /* Ensure they don’t exceed the container width */
-    margin: 20px auto; /* Center the cards and add spacing on sides */
-    padding: 10px; /* Padding inside the card */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 85%;
+    max-width: 85%;
+    margin: 20px auto;
+    padding: 10px;
+    box-sizing: border-box;
   }
 
   h1 {
@@ -272,5 +268,4 @@ button {
     font-size: 16px;
   }
 }
-
 </style>

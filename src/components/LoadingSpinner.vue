@@ -13,10 +13,10 @@
   }
   
   .loader {
-  border: 16px solid #000; /* Light grey border */
-  border-top: 16px solid #c9b373; /* Colored top border */
+  border: 16px solid #000; 
+  border-top: 16px solid #c9b373; 
   border-radius: 50%;
-  border-color: #f3f3f3 #f3f3f3 #f3f3f3 #c9b373; /* Ensure the right segment is colored */
+  border-color: #f3f3f3 #f3f3f3 #f3f3f3 #c9b373; 
   width: 200px;
   height: 200px;
   animation: spin 1.5s linear infinite;
