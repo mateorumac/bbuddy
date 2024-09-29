@@ -267,15 +267,27 @@ button:hover {
 
 @media (max-width: 768px) {
   .meal-planner-container {
-    margin-top: 150px; 
+    margin-top: 150px;
   }
 
   .card {
     width: 90%; 
     max-width: 90%; 
     margin: 20px auto; 
-    padding: 20px; 
+    padding: 40px;
     box-sizing: border-box; 
+  }
+
+  h1 {
+    font-size: 32px;
+    padding-top: 20px;
+    margin-bottom: 25px;
+  }
+
+  button {
+    padding: 15px 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 
   .meal-cards {
@@ -305,8 +317,20 @@ button:hover {
     width: 85%;
     max-width: 85%;
     margin: 20px auto;
-    padding: 15px;
+    padding: 30px;
     box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 28px;
+    padding-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    padding: 12px 25px;
+    margin-top: 15px;
+    margin-bottom: 10px;
   }
 
   .meal-cards {
@@ -326,4 +350,6 @@ button:hover {
     box-sizing: border-box;
   }
 }
+
+
 </style>

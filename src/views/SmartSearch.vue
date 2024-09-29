@@ -231,8 +231,9 @@ export default {
     width: 90%;
     max-width: 90%;
     margin: 20px auto;
-    padding: 20px;
+    padding: 30px;
     box-sizing: border-box;
+    margin-top: 50px;
   }
 
   .results-container {
@@ -269,6 +270,17 @@ export default {
     margin-bottom: 20px;
     text-align: center;
   }
+
+  .search-button {
+    padding: 12px 35px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: -3px;
+  }
+
+  .title1 {
+    padding-top: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -276,8 +288,9 @@ export default {
     width: 85%;
     max-width: 85%;
     margin: 20px auto;
-    padding: 15px;
+    padding: 20px;
     box-sizing: border-box;
+    margin-top: 50px;
   }
 
   .results-container {
@@ -314,6 +327,17 @@ export default {
     margin-bottom: 15px;
     text-align: center;
   }
+
+  .search-button {
+    padding: 10px 30px;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+
+  .title1 {
+    padding-top: 15px;
+  }
 }
+
 </style>
 

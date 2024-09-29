@@ -270,9 +270,9 @@ export default {
 
     .collapse-btn {
       display: block;
-      padding-right: 20px;
-      padding-left: 20px;
-      margin-right: 12px;
+      padding-right: 18px;
+      padding-left: 22px;
+      margin-right: 8px;
     }
     .dropdown {
       left: 47%;

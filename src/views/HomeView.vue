@@ -7,7 +7,7 @@
             <img src="@/assets/logo_transparent.png" alt="App Logo" class="hero-logo" />
             <h1>Welcome to Bite Buddy!</h1>
             <p>Discover delicious recipes and explore a world of culinary possibilities with our easy-to-use recipe search app.</p>
-            <button @click="toggleAboutCard">{{ showAboutCard ? 'Show Less' : 'Learn More' }}</button>
+            <button class="morebtn" @click="toggleAboutCard">{{ showAboutCard ? 'Show Less' : 'Learn More' }}</button>
           </div>
           
           <div v-if="showAboutCard" class="card about-card">
@@ -207,6 +207,11 @@ button:hover {
     flex-direction: column;
     align-items: center;
     width: 100%;
+  }
+
+  .morebtn {
+    margin-top: -25px;
+    margin-bottom: 15px;
   }
 
   .card, .about-card {
