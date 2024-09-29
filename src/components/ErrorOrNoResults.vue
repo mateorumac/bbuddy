@@ -24,7 +24,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 54.7vh; 
+  min-height: 62.9vh; 
   color: #c9b373;
   font-size: 18px;
   margin-bottom: -20px;
@@ -39,12 +39,14 @@ export default {
 }
 
 .error-message {
-  background-color: #000; 
-  padding: 10px 20px; 
-  border-radius: 8px;
-  color: #c9b373; 
-  font-family: 'Roboto', sans-serif; 
-  font-size: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px 30px;
+  border-radius: 10px;
+  color: #f8f5e1;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  margin: 0 auto;
 }
 </style>

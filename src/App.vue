@@ -51,22 +51,9 @@ html, body {
   text-align: center;
   color: #c9b373; 
   overflow-x: hidden;
-  background-image: url('@/assets/background.jpg');
+  background-image: url('@/assets/background1.png');
   background-size: cover;
   background-position: center;
-}
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #000;
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-bottom: 2px solid #c9b373;
-  z-index: 1000;
-  
 }
 
 main {

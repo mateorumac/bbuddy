@@ -88,7 +88,7 @@ export default {
         const response = await apiService.customizeMealPlan(preferences);
         if (response.data) {
           this.mealPlan = response.data;
-          this.switchToMainView(); // Optionally switch view to display the meal plan
+          this.switchToMainView(); 
         }
       } catch (error) {
         this.error = `There was an error customizing the meal plan: ${error.message}`;
@@ -108,7 +108,7 @@ export default {
       return caloriesInfo ? caloriesInfo.amount : 'No calorie data';
     },
     getMealImage(meal) {
-      return meal.image || 'default-image-url.jpg'; // Provide a default if no image is available
+      return meal.image || 'default-image-url.jpg'; 
     },
     goToRecipe(id) {
       this.$router.push({ name: 'RecipeDetails', params: { id } });
@@ -119,35 +119,51 @@ export default {
 
 <style scoped lang="scss">
 .meal-planner-container {
-  margin-top: 50px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  min-height: 77.6vh;
+  min-height: 83.5vh;
   box-sizing: border-box;
 }
 
 .card {
-  background: #000; 
+  background-color: rgba(0, 0, 0, 0.5);
   color: #f8f5e1; 
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 50px;
   width: 100%;
   max-width: 800px; 
   margin-top: 136px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
-  color: #c9b373; 
+  color: #c9b373;
   font-family: 'Lora', serif;
+  font-size: 36px;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
 .description {
   margin-bottom: 20px;
-  color:#f8f5e1;
+  color: #f8f5e1;
   font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  line-height: 1.8;
+  text-align: center;
 }
 
 .date-picker-container, .additional-parameters {
@@ -167,7 +183,7 @@ h1 {
 .button-group {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 button {
@@ -181,6 +197,8 @@ button {
   transition: background-color 0.3s;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  margin-top: 15px;
+  margin-bottom: -20px;
 }
 
 button:hover {
@@ -201,16 +219,17 @@ button:hover {
 }
 
 .meal-card {
-  background: #000; 
-  border-radius: 10px;
-  padding: 10px;
-  color: #c9b373; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 15px;
+  padding: 20px;
+  color: #f8f5e1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0 10px; 
   flex: 0 0 auto; 
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
   width: 300px; 
+  backdrop-filter: blur(15px);
 }
 
 .meal-card:hover {
@@ -219,15 +238,31 @@ button:hover {
 }
 
 .meal-plan-header h2 {
-  background: #000;
-  padding: 10px 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 20px;
+  border-radius: 15px;
   width: fit-content;
-  border-radius: 5px;
-  color: #c9b373; 
+  color: #c9b373;
   font-family: 'Lora', serif;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.meal-card h3 {
+  color: #c9b373;
+  font-family: 'Lora', serif;
+  font-size: 28px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+.meal-card p {
+  color: #f8f5e1;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 768px) {

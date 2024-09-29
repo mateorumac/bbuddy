@@ -113,7 +113,15 @@ export default {
   align-items: center;
   width: 100%;
   padding: 10px;
-  background: #000;
+  background: #f8f5e1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #8c8c8c;
+  z-index: 1000;
 }
 
 .search-container {
@@ -122,13 +130,13 @@ export default {
   align-items: center;
   position: relative;
   flex: 1;
-  margin-left: 24%;
+  margin-left: 27%;
 
   .logo {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 20px;
     cursor: pointer;
     transition: transform 0.5s ease;
 
@@ -141,12 +149,12 @@ export default {
     flex: 1;
     max-width: 400px;
     padding: 10px 15px;
-    border: 1px solid #c9b373;
+    border: 1px solid #8c8c8c;
     border-radius: 30px;
     font-size: 16px;
     outline: none;
-    background-color: #2c2c2c;
-    color: #f8f5e1;
+    background-color: #f0f0e6;
+    color: #2c2c2c;
 
     &::placeholder {
       color: #888;
@@ -166,12 +174,12 @@ export default {
   .dropdown {
     position: absolute;
     top: 105%;
-    left: 53.8%;
+    left: 55%;
     transform: translateX(-50%);
     width: 80%;
     max-width: 430px;
-    background: #000;
-    border: 1px solid #444;
+    background: #f8f5e1;
+    border: 1px solid #c9b373;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
@@ -187,9 +195,9 @@ export default {
       li {
         padding: 10px;
         cursor: pointer;
-        background: #000;
-        color: #f8f5e1;
-        border-bottom: 1px solid #444;
+        background: #f8f5e1;
+        color: #2c2c2c;
+        border-bottom: 1px solid #c9b373;
         &:hover {
           background: #c9b373;
           color: #2c2c2c;
@@ -198,20 +206,22 @@ export default {
     }
 
     .show-all-results-button {
-      width: 100%;
-      padding: 10px;
-      background: #c9b373;
-      color: #000;
-      border: none;
-      cursor: pointer;
-      font-family: 'Lora', serif;
-      font-size: 16px;
-      margin: 0;
-      border-top: 1px solid #444;
-      &:hover {
-        background: #bfa660;
-      }
-    }
+  width: 100%;
+  padding: 12px 24px; 
+  background: #c9b373;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  &:hover {
+    background: #bfa660;
+  }
+}
   }
 }
 
@@ -221,20 +231,22 @@ export default {
   position: absolute;
   top: 90px;
   right: 20px;
-  background: #000;
+  background: #f8f5e1;
   border: 1px solid #c9b373;
   border-radius: 4px;
-  padding: 10px;
-  width: 150px;
+  padding: 20px; 
+  width: 180px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-right: 20px;
 
   a {
-    color: #c9b373;
+    color: #2c2c2c;
     text-decoration: none;
-    padding: 10px;
+    padding: 15px; 
     text-align: center;
-    border-bottom: 1px solid #444;
+    font-size: 18px; 
+    border-bottom: 1px solid #c9b373;
+    transition: background-color 0.3s ease, color 0.3s ease;
 
     &:hover {
       background-color: #c9b373;
@@ -242,7 +254,7 @@ export default {
     }
 
     &:visited {
-      color: #f8f5e1;
+      color: #2c2c2c;
     }
   }
 
@@ -272,14 +284,14 @@ export default {
 
   .navbar {
     a {
-      color: #f8f5e1;
+      color: #2c2c2c;
       text-align: center;
       padding: 10px;
       text-decoration: none;
       border-bottom: 1px solid #c9b373;
 
       &:visited {
-        color: #f8f5e1;
+        color: #2c2c2c;
       }
     }
   }
@@ -311,7 +323,7 @@ export default {
     a {
       text-align: left;
       padding: 0 15px;
-      color: #f8f5e1;
+      color: #2c2c2c;
       font-weight: bold;
       border-bottom: none;
       background-color: transparent;
@@ -319,7 +331,7 @@ export default {
 
       &:hover {
         background-color: transparent;
-        color: #f8f5e1;
+        color: #c9b373;
       }
 
       &:hover::after {
@@ -342,7 +354,7 @@ export default {
       }
 
       &:visited {
-        color: #f8f5e1;
+        color: #2c2c2c;
       }
     }
   }

@@ -26,13 +26,13 @@ export default {
 }
 
 footer {
-  background: #000; 
-  color: #f8f5e1; 
+  background: #f8f5e1;
+  color: #2c2c2c;
   text-align: center;
   padding: 20px 0;
   width: 100%;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-  border-top: 2px solid #c9b373; 
+  border-top: 2px solid #8c8c8c;
 
   .footer-content {
     display: flex;
@@ -43,7 +43,8 @@ footer {
     p {
       margin: 0;
       padding: 5px 0;
-      color: #c9b373; 
+      color: #2c2c2c;
+      font-size: 16px;
     }
 
     .social-icons {
@@ -52,37 +53,29 @@ footer {
       gap: 20px;
 
       a {
-        color: #c9b373; 
+        color: #2c2c2c;
         font-size: 20px;
         position: relative;
-        transition: color 0.3s;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #c9b373;
+        }
 
         &:hover::after {
-          content: '';
-          position: absolute;
-          width: 120%;
-          height: 2px;
-          background-color: #c9b373;
-          bottom: -5px;
-          left: 0;
           transform: scaleX(1);
-          transition: transform 0.3s;
         }
 
         &::after {
           content: '';
           position: absolute;
-          width: 100%;
-          height: 2px;
-          background-color: #c9b373;
           bottom: -5px;
           left: 0;
+          width: 100%;
+          height: 2px;
           transform: scaleX(0);
-          transition: transform 0.3s;
-        }
-
-        &:hover {
-          color: #bfa660; 
+          transform-origin: bottom left;
+          transition: transform 0.3s ease;
         }
       }
     }
@@ -93,7 +86,6 @@ footer {
   .footer-wrapper {
     margin-left: 22px;
   }
-  
 }
 
 </style>

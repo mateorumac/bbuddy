@@ -16,12 +16,12 @@
             <p>Our app, powered by the cutting-edge Spoonacular API, provides you with access to an extensive collection of the most current and celebrated recipes. Whether you're an avid home cook or a culinary enthusiast, Bite Buddy helps you search for groceries and generate personalized meal plans. You can even search for recipes by simply entering the ingredients you have on hand.</p>
             <p>Not sure what to prepare next? Our 'Inspire Me' section offers a randomly generated recipe to elevate your dining experience. Begin your culinary journey with Bite Buddy today, and let us inspire your next gourmet creation.</p>
           </div>
-          
         </div>
       </div>
     </main>
   </div>
 </template>
+
 <script>
 export default {
   data() {
@@ -37,6 +37,7 @@ export default {
   }
 };
 </script>
+
 <style lang="scss">
 html {
   scroll-behavior: smooth;
@@ -58,7 +59,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: 83vh;
+  min-height: 84.5vh;
   text-align: center;
   overflow-x: hidden;
   width: 100%;
@@ -89,64 +90,77 @@ main {
 }
 
 .card {
-  background-color: #000;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
   max-width: 900px;
   width: 100%;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-
-.card:hover {
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  transform: translateY(-5px);
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.main-card {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.about-card {
-  background-color: #000;
-  color: #e0e0e0;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-top: 20px;
-  text-align: left;
-  max-width: 900px;
-  width: 100%;
-}
-
-.about-card h1 {
-  color: #c9b373;
-  font-size: 28px;
-  margin-bottom: 15px;
-  font-family: 'Lora', serif;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
   text-align: center;
 }
 
-.about-card p {
-  font-size: 18px;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+}
+
+.main-card h1 {
+  font-size: 40px;
+  line-height: 1.2;
+  color: #c9b373;
+  font-family: 'Lora', serif;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.main-card p {
+  font-size: 20px;
   line-height: 1.8;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+  color: #f8f5e1;
   font-family: 'Roboto', sans-serif;
-  color: #e0e0e0;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.about-card {
+  margin-top: 40px; 
+}
+
+.about-card h1 {
+  font-size: 36px;
+  color: #c9b373;
+  font-family: 'Lora', serif;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.about-card p {
+  font-size: 20px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #f8f5e1;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: #c9b373;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #000;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #bfa660;
+  transform: scale(1.05);
 }
 
 .hero-logo {
@@ -170,38 +184,6 @@ main {
   90% {
     transform: translateY(-2px);
   }
-}
-
-h1 {
-  font-size: 36px;
-  color: #c9b373;
-  margin-bottom: 10px;
-  font-family: 'Lora', serif;
-}
-
-p {
-  font-size: 20px;
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  color: #ffffff;
-  background: #c9b373;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-button:hover {
-  background: #bfa660;
-  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {

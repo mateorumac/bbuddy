@@ -1,8 +1,5 @@
 <template>
   <div class="combined-container">
-    <div class="header-container">
-      <h1 class="titleROTD">Recipe of the Day</h1>
-    </div>
     <div class="content-container">
       <LoadingSpinner v-if="loading" loadingText="Loading recipe of the day..." />
       <ErrorOrNoResults v-else-if="error" :message="error" />
@@ -66,78 +63,77 @@ export default {
   padding: 60px 20px;
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 60px;
-}
-
-.header-container {
-  background-color: #000;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  justify-content: center; 
-  width: 96%;
-  max-width: 960px; 
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.titleROTD {
-  color: #c9b373;
-  font-family: 'Lora', serif;
-  font-size: 36px;
-  margin: 0;
+  margin-top: 100px;
 }
 
 .content-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
   width: 100%; 
   max-width: 100%; 
 }
 
 .card {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5); 
   color: #f8f5e1;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 30px;
-  width: 100%; 
+  border-radius: 15px;
+  padding: 50px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
 }
 
 .recipe-of-the-day img {
   max-width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 20px;
 }
 
 h3 {
   color: #c9b373;
   font-family: 'Lora', serif;
-  font-size: 24px;
+  font-size: 36px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 40px;
+  margin-top: -10px;
 }
 
 p {
-  color: #e0e0e0;
+  color: #ffffff;
   font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .view-details-button {
   display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
+  margin-top: 20px;
+  padding: 15px 30px;
   background: #c9b373;
   color: #000;
-  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 10px;
+  text-align: center;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
-  transition: background 0.3s;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
 
-  &:hover {
-    background: #bfa660;
-  }
+.view-details-button:hover {
+  background: #bfa660;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
@@ -148,148 +144,65 @@ p {
     margin-top: 70px;
   }
 
-  .header-container {
-    background: #000;
-    padding: 10px 10px;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: fit-content;
-    border-radius: 5px;
-    color: #c9b373;
-    font-family: 'Lora', serif;
-  }
-
-  .title {
-    font-size: 28px;
-    margin: 0 auto;
-    padding: 5px 15px;
-    word-wrap: break-word;
-    text-align: center;
-    background-color: #000;
-    display: inline-block;
-    border-radius: 5px;
+  .titleROTD {
+    font-size: 40px;
   }
 
   .content-container {
-    gap: 15px;
-    width: 90%;
-    margin: 0 auto;
+    gap: 20px;
   }
 
   .card {
-    padding: 20px;
-    width: 100%;
-    margin: 0 auto 20px auto;
-    box-sizing: border-box;
-    font-size: 18px;
-    line-height: 1.6;
-  }
-
-  .recipe-of-the-day img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    padding: 25px;
   }
 
   h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
-    text-align: center;
-    color: #c9b373;
-    font-family: 'Lora', serif;
+    font-size: 28px;
   }
 
   p {
     font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 15px;
   }
 
   .view-details-button {
-    width: 100%;
-    padding: 10px 0;
+    padding: 12px 20px;
     font-size: 18px;
-    text-align: center;
-    box-sizing: border-box;
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .combined-container {
-    padding: 60px 5px;
+    padding: 50px 5px;
     max-width: 95%;
     margin: 0 auto;
-    margin-top: 70px;
+    margin-top: 60px;
   }
 
-  .header-container {
-    background: #000;
-    padding: 10px 10px;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: fit-content;
-    border-radius: 5px;
-    color: #c9b373;
-    font-family: 'Lora', serif;
-  }
-
-  .title {
-    font-size: 24px;
-    margin: 0 auto;
-    padding: 5px 15px;
-    word-wrap: break-word;
-    text-align: center;
-    background-color: #000;
-    display: inline-block;
-    border-radius: 5px;
-    width: fit-content;
+  .titleROTD {
+    font-size: 36px;
   }
 
   .content-container {
-    gap: 10px;
-    width: 95%;
-    margin: 0 auto;
+    gap: 15px;
   }
 
   .card {
-    padding: 15px;
-    width: 100%;
-    margin: 0 auto 20px auto;
-    box-sizing: border-box;
-    font-size: 18px;
-    line-height: 1.6;
-  }
-
-  .recipe-of-the-day img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    padding: 20px;
   }
 
   h3 {
-    font-size: 20px;
-    margin-bottom: 8px;
-    text-align: center;
-    color: #c9b373;
-    font-family: 'Lora', serif;
+    font-size: 24px;
   }
 
   p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 12px;
+    font-size: 16px;
   }
 
   .view-details-button {
+    padding: 10px 18px;
+    font-size: 16px;
     width: 100%;
-    padding: 10px 0;
-    font-size: 18px;
-    text-align: center;
-    box-sizing: border-box;
   }
 }
 </style>
