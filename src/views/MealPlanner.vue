@@ -267,7 +267,7 @@ button:hover {
 
 @media (max-width: 768px) {
   .meal-planner-container {
-    margin-top: 150px;
+    margin-top: 110px;
   }
 
   .card {
@@ -282,6 +282,12 @@ button:hover {
     font-size: 32px;
     padding-top: 20px;
     margin-bottom: 25px;
+  }
+
+  .input-field, .full-width-input {
+    width: 85%;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   button {
@@ -310,7 +316,7 @@ button:hover {
 
 @media (max-width: 480px) {
   .meal-planner-container {
-    margin-top: 150px;
+    margin-top: 110px;
   }
 
   .card {
@@ -325,6 +331,12 @@ button:hover {
     font-size: 28px;
     padding-top: 15px;
     margin-bottom: 20px;
+  }
+
+  .input-field, .full-width-input {
+    width: 85%;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   button {

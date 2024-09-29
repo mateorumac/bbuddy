@@ -236,6 +236,17 @@ export default {
     margin-top: 50px;
   }
 
+  .search-input {
+    width: 85%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+    border: 1px solid #c9b373;
+    border-radius: 5px;
+    background-color: #2c2c2c;
+    color: #f8f5e1;
+  }
+
   .results-container {
     width: 90%;
     max-width: 90%;
@@ -276,6 +287,7 @@ export default {
     font-size: 18px;
     margin-top: 20px;
     margin-bottom: -3px;
+    width: 97.5%;
   }
 
   .title1 {
@@ -291,6 +303,17 @@ export default {
     padding: 20px;
     box-sizing: border-box;
     margin-top: 50px;
+  }
+
+  .search-input {
+    width: 85%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+    border: 1px solid #c9b373;
+    border-radius: 5px;
+    background-color: #2c2c2c;
+    color: #f8f5e1;
   }
 
   .results-container {
@@ -332,6 +355,7 @@ export default {
     padding: 10px 30px;
     font-size: 16px;
     margin-top: 15px;
+    width: 97.5%;
   }
 
   .title1 {

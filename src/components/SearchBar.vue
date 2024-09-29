@@ -280,6 +280,10 @@ export default {
       width: 70%;
       max-width: 350px;
     }
+
+    input[type="text"] {
+      margin-left: -7px;
+    }
   }
 
   .navbar {
